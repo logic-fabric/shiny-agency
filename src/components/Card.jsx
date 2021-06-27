@@ -5,14 +5,19 @@ import DefaultPicture from "../assets/profile.png";
 import colors from "../utils/style/colors";
 
 const CardWrapper = styled.div`
-  width: 12rem;
-  margin: 1rem;
   padding: 1rem;
   border-radius: 0.5rem;
 
   text-align: center;
 
   background: ${colors.neutral100};
+
+  cursor: pointer;
+  transition: 200ms;
+
+  &:hover {
+    box-shadow: 0.125rem 0.25rem 1rem ${colors.neutral200};
+  }
 `;
 
 const CardJobTitle = styled.p`
