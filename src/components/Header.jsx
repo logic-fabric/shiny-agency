@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import "../styles/Header.css";
 import colors from "../utils/style/colors";
 
 const StyledLink = styled(Link)`
