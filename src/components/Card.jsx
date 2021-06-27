@@ -1,15 +1,43 @@
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
-import "../styles/Card.css";
 import DefaultPicture from "../assets/profile.png";
+
+const CardWrapper = styled.div`
+  width: 12rem;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  text-align: center;
+
+  background: LightGoldenRodYellow;
+`;
+
+const CardJobTitle = styled.p`
+  color: #5843e4;
+  font-size: 1.5rem;
+  font-weight: 700;
+`;
+
+const CardPicture = styled.img`
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+`;
+
+const CardName = styled.p`
+  font-size: 1.25rem;
+  font-weight: 700;
+`;
 
 function Card({ name, jobTitle, picture }) {
   return (
-    <div className="card">
-      <span>{jobTitle}</span>
-      <img src={picture} alt={`Portrait de ${name}`} height={80} width={80} />
-      <span>{name}</span>
-    </div>
+    <CardWrapper>
+      <CardJobTitle>{jobTitle}</CardJobTitle>
+      <CardPicture src={picture} alt={`Portrait de ${name}`} />
+      <CardName>{name}</CardName>
+    </CardWrapper>
   );
 }
 
