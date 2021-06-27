@@ -23,7 +23,7 @@ const freelanceProfiles = [
 function Freelances() {
   return (
     <div className="Freelances">
-      <h1>Freelances</h1>
+      <h1>Nos freelances</h1>
       {freelanceProfiles.map((profile, index) => (
         <Card
           key={`${profile.name}-${index}`}

@@ -2,7 +2,7 @@ import "../styles/Error404.css";
 
 function Error404() {
   return <div className="Error404">
-    <h1>404</h1>
+    <h1>404 | Oups, nous n'avons pas trouvé cette page</h1>
   </div>;
 }
 

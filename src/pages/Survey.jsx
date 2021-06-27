@@ -2,7 +2,7 @@ import "../styles/Survey.css";
 
 function Survey() {
   return <div className="Survey">
-    <h1>Survey page</h1>
+    <h1>Passer le test</h1>
   </div>;
 }
 
