@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 import "../styles/Header.css";
+
+const StyledLink = styled(Link)`
+  padding: 1rem;
+  color: #8186a0;
+  font-size: 1.1rem;
+  text-decoration: none;
+`;
 
 function Header() {
   return (
@@ -8,13 +16,13 @@ function Header() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Accueil</Link>
+            <StyledLink to="/">Accueil</StyledLink>
           </li>
           <li>
-            <Link to="/sondage/1">Sondage</Link>
+            <StyledLink to="/sondage/1">Sondage</StyledLink>
           </li>
           <li>
-            <Link to="/freelances">Freelances</Link>
+            <StyledLink to="/freelances">Freelances</StyledLink>
           </li>
         </ul>
       </nav>
