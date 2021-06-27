@@ -1,4 +1,7 @@
+import PropTypes from "prop-types";
+
 import "../styles/Card.css";
+import DefaultPicture from "../assets/profile.png";
 
 function Card({ name, jobTitle, picture }) {
   return (
@@ -9,5 +12,15 @@ function Card({ name, jobTitle, picture }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  name: PropTypes.string.isRequired,
+  jobTitle: PropTypes.string.isRequired,
+  picture: PropTypes.string,
+};
+
+Card.defaultProps = {
+  picture: DefaultPicture,
+};
 
 export default Card;
