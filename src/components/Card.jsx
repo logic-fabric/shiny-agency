@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import DefaultPicture from "../assets/profile.png";
+import colors from "../utils/style/colors";
 
 const CardWrapper = styled.div`
   width: 12rem;
@@ -11,11 +12,11 @@ const CardWrapper = styled.div`
 
   text-align: center;
 
-  background: LightGoldenRodYellow;
+  background: ${colors.neutral100};
 `;
 
 const CardJobTitle = styled.p`
-  color: #5843e4;
+  color: ${colors.primary500};
   font-size: 1.5rem;
   font-weight: 700;
 `;

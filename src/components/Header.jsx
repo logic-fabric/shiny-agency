@@ -2,19 +2,26 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import "../styles/Header.css";
+import colors from "../utils/style/colors";
 
 const StyledLink = styled(Link)`
   display: inline-block;
 
   padding: 0.5rem 1rem;
 
-  color: #8186a0;
+  color: ${colors.secondary500};
   font-size: 1.1rem;
   text-decoration: none;
 
   ${(props) =>
     props.$isFullLink &&
-    `color: white; border-radius: 30px; background-color: #5843E4;`}
+    `
+      border-radius: 2rem;
+
+      color: white;
+      
+      background-color: ${colors.primary500};
+    `}
 `;
 
 function Header() {
