@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 import Error404 from "./pages/Error404";
 import Freelances from "./pages/Freelances";
@@ -13,6 +13,12 @@ import reportWebVitals from "./reportWebVitals";
 const GlobalStyle = createGlobalStyle`
   html {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
+  }
+
+  body {
+    max-width: 1440px;
+    margin: auto;
+    padding: 0 4rem;
   }
 `;
 
