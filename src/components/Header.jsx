@@ -18,7 +18,7 @@ function Header() {
             <StyledLink to="/">Accueil</StyledLink>
           </li>
           <li>
-            <StyledLink to="/freelances">Freelances</StyledLink>
+            <StyledLink to="/freelances">Nos freelances</StyledLink>
           </li>
           <li>
             <StyledLink to="/passer-le-test/1" $isFullLink={true}>
@@ -35,11 +35,15 @@ const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  padding: 3rem 0;
 `;
 
 const LogoLink = styled(Link)`
   display: flex;
   align-items: center;
+
+  cursor: pointer;
 `;
 
 const Logo = styled.img`
@@ -66,6 +70,8 @@ const StyledLink = styled(Link)`
   font-weight: 700;
   text-decoration: none;
 
+  transition: 200ms;
+
   ${(props) =>
     props.$isFullLink &&
     `
@@ -75,6 +81,10 @@ const StyledLink = styled(Link)`
       
       background-color: ${colors.primary500};
     `}
+
+  &:hover {
+    color: ${colors.primary500};
+  }
 `;
 
 export default Header;

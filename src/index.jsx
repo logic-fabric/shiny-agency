@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   main {
-    margin: 5rem 0;
+    margin: 3rem 0;
     padding: 2rem 1rem;
   }
 `;
