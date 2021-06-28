@@ -23,10 +23,9 @@ function Home() {
   );
 }
 
-const HomeWrapper = styled.div`
+const HomeWrapper = styled.main`
   display: flex;
 
-  margin: 5rem 0;
   padding: 11rem 6rem;
   background: ${colors.neutral100};
 `;

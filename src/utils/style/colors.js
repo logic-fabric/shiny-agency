@@ -5,6 +5,7 @@ const colors = {
 
   neutral100: "#f9f9fc",
   neutral200: "#e2e3e9",
+  neutral900: "#2f2e41",
 };
 
 export default colors;

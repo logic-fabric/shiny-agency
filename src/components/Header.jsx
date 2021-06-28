@@ -35,8 +35,6 @@ const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 2rem 1rem;
 `;
 
 const LogoLink = styled(Link)`
@@ -64,7 +62,7 @@ const StyledLink = styled(Link)`
   padding: 0.5rem 1rem;
 
   color: ${colors.secondary500};
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 700;
   text-decoration: none;
 

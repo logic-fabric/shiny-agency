@@ -8,17 +8,25 @@ import Freelances from "./pages/Freelances";
 import Home from "./pages/Home";
 import Survey from "./pages/Survey";
 import Header from "./components/Header";
+import colors from "./utils/style/colors";
 import reportWebVitals from "./reportWebVitals";
 
 const GlobalStyle = createGlobalStyle`
   html {
+    color: ${colors.neutral900};
     font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-weight: 400;
   }
 
   body {
     max-width: 1440px;
     margin: auto;
     padding: 0 4rem;
+  }
+
+  main {
+    margin: 5rem 0;
+    padding: 2rem 1rem;
   }
 `;
 
