@@ -1,24 +1,33 @@
 import styled from "styled-components";
 
 import Card from "../components/Card";
-import DefaultPicture from "../assets/profile.png";
 import colors from "../utils/style/colors";
 
 const freelanceProfiles = [
   {
-    name: "Jane Doe",
-    jobTitle: "Devops",
-    picture: DefaultPicture,
+    name: "Aubin Leroux",
+    jobTitle: "Développeur mobile Android/Kotlin",
+    picture: "https://randomuser.me/api/portraits/men/15.jpg",
   },
   {
-    name: "John Doe",
-    jobTitle: "Developpeur frontend",
-    picture: DefaultPicture,
+    name: "Tessa Sanchez",
+    jobTitle: "Designeuse UI",
+    picture: "https://randomuser.me/api/portraits/women/14.jpg",
   },
   {
-    name: "Jeanne Biche",
-    jobTitle: "Développeuse Fullstack",
-    picture: DefaultPicture,
+    name: "Marie Adam",
+    jobTitle: "Développeuse back-end Python/Django",
+    picture: "https://randomuser.me/api/portraits/women/69.jpg",
+  },
+  {
+    name: "Evan Fleury",
+    jobTitle: "Scrum Master",
+    picture: "https://randomuser.me/api/portraits/men/14.jpg",
+  },
+  {
+    name: "Maëlia Gauthier",
+    jobTitle: "Cheffe de projet",
+    picture: "https://randomuser.me/api/portraits/women/47.jpg",
   },
 ];
 

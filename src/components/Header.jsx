@@ -63,7 +63,7 @@ const StyledLink = styled(Link)`
   display: inline-block;
 
   margin: 0 0 0 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
 
   color: ${colors.secondary500};
   font-size: 1.25rem;
@@ -71,6 +71,10 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 
   transition: 200ms;
+
+  &:hover {
+    color: ${colors.primary500};
+  }
 
   ${(props) =>
     props.$isFullLink &&
@@ -80,11 +84,11 @@ const StyledLink = styled(Link)`
       color: white;
       
       background-color: ${colors.primary500};
-    `}
 
-  &:hover {
-    color: ${colors.primary500};
-  }
+      &:hover {
+        color: ${colors.neutral100};
+      }
+    `}
 `;
 
 export default Header;

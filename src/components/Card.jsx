@@ -25,9 +25,9 @@ Card.defaultProps = {
 };
 
 const CardWrapper = styled.div`
-  width: 20rem;
+  width: 18rem;
   margin: 1.5rem 2rem;
-  padding: 2rem;
+  padding: 2rem 3rem;
   border-radius: 0.5rem;
 
   text-align: center;
