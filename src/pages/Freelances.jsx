@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import Card from "../components/Card";
 import DefaultPicture from "../assets/profile.png";
+import colors from "../utils/style/colors";
 
 const freelanceProfiles = [
   {
@@ -21,17 +22,13 @@ const freelanceProfiles = [
   },
 ];
 
-const CardsWrapper = styled.div`
-  display: grid;
-  gap: 1rem 2rem;
-  grid-template-rows: 20rem 20rem;
-  grid-template-columns: repeat(2, 1fr);
-`;
-
 function Freelances() {
   return (
-    <div className="Freelances">
-      <h1>Nos freelances</h1>
+    <FreelancesWrapper>
+      <MainTitle>Trouvez votre prestataire</MainTitle>
+      <SubTitle>
+        Chez Shiny nous réunissons les meilleurs profils pour vous.
+      </SubTitle>
       <CardsWrapper>
         {freelanceProfiles.map((profile, index) => (
           <Card
@@ -42,8 +39,29 @@ function Freelances() {
           />
         ))}
       </CardsWrapper>
-    </div>
+    </FreelancesWrapper>
   );
 }
+
+const FreelancesWrapper = styled.main`
+  text-align: center;
+`;
+
+const MainTitle = styled.h1`
+  font-size: 2rem;
+`;
+
+const SubTitle = styled.h2`
+  color: ${colors.secondary500};
+  font-size: 1.25rem;
+`;
+
+const CardsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  margin: 4rem 16rem 0 16rem;
+`;
 
 export default Freelances;
