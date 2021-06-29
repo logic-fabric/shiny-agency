@@ -87,12 +87,12 @@ async function getRandomFreelance() {
       return freelanceProfile;
     } else {
       console.error(
-        `HTTP-Error-${response.status} while fetching https://randomuser.me/api/?nat=fr`
+        `HTTP-Error-${response.status} while fetching random freelances profiles at https://randomuser.me/api/?nat=fr`
       );
     }
   } catch (err) {
     console.error(
-      `An error as occured while fetching ${this._dataSource} : ${err}`
+      `An error as occured while fetching https://randomuser.me/api/?nat=fr : ${err}`
     );
   }
 }

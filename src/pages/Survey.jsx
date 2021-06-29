@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 import colors from "../utils/style/colors";
 
-function Survey() {
+function Survey(props) {
+  console.log(props.survey);
+  
   return (
     <SurveyWrapper>
       <QuestionNumber>Question 1</QuestionNumber>
