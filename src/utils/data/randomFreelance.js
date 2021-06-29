@@ -25,9 +25,9 @@ const JOBS = [
     female: "Développeuse mobile",
   },
   {
-    abridged: "chief",
-    male: "Chef de projet",
-    female: "Cheffe de projet",
+    abridged: "seo",
+    male: "Expert SEO",
+    female: "Experte SEO",
   },
   {
     abridged: "ui",
@@ -40,6 +40,11 @@ const JOBS = [
     female: "Designeuse UX",
   },
   {
+    abridged: "chief",
+    male: "Chef de projet",
+    female: "Cheffe de projet",
+  },
+  {
     abridged: "scrum",
     male: "Scrum Master",
     female: "Scrum Master",
@@ -50,17 +55,21 @@ const TECHNOS = {
   full: ["Django/Vue.js", "NodeJS/React.js", "Symphony/Angular"],
   front: ["React.js/Tailwind", "Vue.js/Material", "Angular/Bootstrap"],
   back: ["NodeJS/Express", "Python/Django"],
+  devops: ["NodeJS/Docker", "Python/Kubernetes"],
   mobile: ["iOS/Swift", "Android/Kotlin"],
-  chief: [""],
+  seo: [""],
   ui: [""],
   ux: [""],
+  chief: [""],
   scrum: [""],
 };
 
 async function getRandomFreelance() {
-  fetch("https://randomuser.me/api/?nat=fr")
-    .then((response) => response.json())
-    .then((data) => {
+  try {
+    let response = await fetch("https://randomuser.me/api/?nat=fr");
+
+    if (response.ok) {
+      const data = await response.json();
       const user = data.results[0];
 
       user.job = JOBS[Math.floor(Math.random() * JOBS.length)];
@@ -75,10 +84,28 @@ async function getRandomFreelance() {
         picture: user.picture.large,
       };
 
-      console.log(freelanceProfile);
-
       return freelanceProfile;
-    });
+    } else {
+      console.error(
+        `HTTP-Error-${response.status} while fetching https://randomuser.me/api/?nat=fr`
+      );
+    }
+  } catch (err) {
+    console.error(
+      `An error as occured while fetching ${this._dataSource} : ${err}`
+    );
+  }
 }
 
-export default getRandomFreelance;
+async function getRandomProfiles(quantity) {
+  const freelancesProfiles = [];
+
+  for (let _ = 0; _ < quantity; _++) {
+    const profile = await getRandomFreelance();
+    freelancesProfiles.push(profile);
+  }
+
+  return freelancesProfiles;
+}
+
+export default getRandomProfiles;
