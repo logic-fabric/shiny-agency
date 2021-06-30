@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
 
 import Error404 from "./pages/Error404";
 import Freelances from "./pages/Freelances";
@@ -9,29 +8,10 @@ import Home from "./pages/Home";
 import Survey from "./pages/Survey";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import colors from "./utils/style/colors";
-import { ThemeProvider } from "./utils/context/context";
+import GlobalStyle from "./utils/style/GlobalStyle";
+import { ThemeProvider } from "./utils/context/providers";
 import getRandomProfiles from "./utils/data/randomFreelance";
 import reportWebVitals from "./reportWebVitals";
-
-const GlobalStyle = createGlobalStyle`
-  html {
-    color: ${colors.neutral900};
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    font-weight: 400;
-  }
-
-  body {
-    max-width: 1440px;
-    margin: auto;
-    padding: 0 4rem;
-  }
-
-  main {
-    margin: 3rem 0;
-    padding: 2rem 1rem;
-  }
-`;
 
 async function initApp() {
   const profilesQuantity = 4 + Math.ceil(Math.random() * 4);
