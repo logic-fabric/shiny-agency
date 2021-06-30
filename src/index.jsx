@@ -9,8 +9,9 @@ import Home from "./pages/Home";
 import Survey from "./pages/Survey";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import getRandomProfiles from "./utils/data/randomFreelance";
 import colors from "./utils/style/colors";
+import { ThemeProvider } from "./utils/context/context";
+import getRandomProfiles from "./utils/data/randomFreelance";
 import reportWebVitals from "./reportWebVitals";
 
 const GlobalStyle = createGlobalStyle`
@@ -39,23 +40,25 @@ async function initApp() {
   ReactDOM.render(
     <React.StrictMode>
       <Router>
-        <GlobalStyle />
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/faire-le-test/:questionId">
-            <Survey />
-          </Route>
-          <Route path="/freelances">
-            <Freelances freelancesProfiles={freelancesProfiles} />
-          </Route>
-          <Route>
-            <Error404 />
-          </Route>
-        </Switch>
-        <Footer />
+        <ThemeProvider>
+          <GlobalStyle />
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/faire-le-test/:questionId">
+              <Survey />
+            </Route>
+            <Route path="/freelances">
+              <Freelances freelancesProfiles={freelancesProfiles} />
+            </Route>
+            <Route>
+              <Error404 />
+            </Route>
+          </Switch>
+          <Footer />
+        </ThemeProvider>
       </Router>
     </React.StrictMode>,
     document.getElementById("root")
