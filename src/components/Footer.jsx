@@ -1,11 +1,17 @@
+import { useContext } from "react";
 import styled from "styled-components";
 
+import { ThemeContext } from "../utils/context/providers";
 import colors from "../utils/style/colors";
 
 function Footer() {
+  const { toggleTheme } = useContext(ThemeContext);
+
   return (
     <FooterContainer>
-      <ThemeSwitcher>Changer de thème</ThemeSwitcher>
+      <ThemeSwitcher onClick={() => toggleTheme()}>
+        Changer de thème
+      </ThemeSwitcher>
     </FooterContainer>
   );
 }
@@ -20,7 +26,7 @@ const FooterContainer = styled.footer`
 
 const ThemeSwitcher = styled.button`
   padding: 0.5rem 2rem;
-  border-width: 0;;
+  border-width: 0;
   border-radius: 2rem;
 
   color: ${colors.neutral900};
