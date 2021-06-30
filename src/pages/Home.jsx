@@ -12,7 +12,7 @@ function Home() {
           Repérez vos besoins, on s'occupe du reste, <br />
           avec les meilleurs talents
         </Slogan>
-        <CallToActionLink to="/passer-le-test/1" $isFullLink={true}>
+        <CallToActionLink to="/passer-le-test/1">
           Passer le test
         </CallToActionLink>
       </div>

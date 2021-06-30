@@ -1,30 +1,110 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
-import getSampleSurvey from "../utils/data/sampleSurvey";
 import colors from "../utils/style/colors";
 
 function Survey() {
-  useEffect(() => getSampleSurvey(), []);
+  const { questionId } = useParams();
+  const questionNumber = parseInt(questionId);
+
+  const [survey, setSurvey] = useState({});
+  //const [isDataLoading, setDataLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    async function fetchSurvey() {
+      //setDataLoading(true);
+
+      try {
+        const response = await fetch("../data/sample-survey.json");
+        const surveyData = await response.json();
+
+        setSurvey(surveyData);
+      } catch (err) {
+        console.error(
+          `An error as occured while fetching ../data/sample-survey.json : ${err}`
+        );
+
+        setError(true);
+      } finally {
+        //setDataLoading(false);
+      }
+    }
+
+    fetchSurvey();
+  }, []);
+
+  if (error) {
+    return (
+      <ErrorWrapper>
+        <ErrorText>Oups, il y a eu un problème</ErrorText>
+        <CallToActionLink to="/">Revenir à l'accueil</CallToActionLink>
+      </ErrorWrapper>
+    );
+  }
+
+  const lastQuestionNumber = Object.keys(survey).length;
+  const prevQuestionNumber = Math.max(1, questionNumber - 1);
+  const nextQuestionNumber = Math.min(questionNumber + 1, lastQuestionNumber);
+
+  console.log(survey);
+  console.log(
+    `Question ${questionNumber} | prev = ${prevQuestionNumber} | next = ${nextQuestionNumber} | last = ${lastQuestionNumber}`
+  );
 
   return (
     <SurveyWrapper>
-      <QuestionNumber>Question 1</QuestionNumber>
-      <Question>
-        Votre application doit-elle impérativement apparaître en premier dans
-        les résultats de recherche ?
-      </Question>
+      <QuestionNumber>Question {questionNumber}</QuestionNumber>
+      <Question>{survey[questionNumber]}</Question>
       <AnswersButtonsWrapper>
         <AnswerButton>Oui</AnswerButton>
         <AnswerButton>Non</AnswerButton>
       </AnswersButtonsWrapper>
       <SurveyNav>
-        <SurveyNavLink className="previousNavLink">Précédente</SurveyNavLink>
-        <SurveyNavLink>Suivante</SurveyNavLink>
+        <SurveyNavLink
+          className="previousNavLink"
+          to={`/passer-le-test/${prevQuestionNumber}`}
+        >
+          Précédente
+        </SurveyNavLink>
+        <SurveyNavLink to={`/passer-le-test/${nextQuestionNumber}`}>
+          Suivante
+        </SurveyNavLink>
       </SurveyNav>
     </SurveyWrapper>
   );
 }
+
+const ErrorWrapper = styled.main`
+  padding: 10rem 4rem;
+
+  text-align: center;
+
+  background: ${colors.neutral100};
+`;
+
+const ErrorText = styled.p`
+  margin: 1rem;
+
+  font-size: 2rem;
+  font-weight: 700;
+`;
+
+const CallToActionLink = styled(Link)`
+  display: inline-block;
+
+  margin: 4rem 0 0 0;
+  padding: 0.5rem 4rem;
+  border-radius: 2rem;
+
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  background: ${colors.primary500};
+`;
 
 const SurveyWrapper = styled.main`
   text-align: center;
@@ -75,7 +155,7 @@ const SurveyNav = styled.div`
   justify-content: center;
 `;
 
-const SurveyNavLink = styled.span`
+const SurveyNavLink = styled(Link)`
   min-width: 7rem;
   margin: 0 0.5rem;
   padding: 0.5rem;
