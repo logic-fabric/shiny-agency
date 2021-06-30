@@ -12,8 +12,8 @@ function Home() {
           Repérez vos besoins, on s'occupe du reste, <br />
           avec les meilleurs talents
         </Slogan>
-        <CallToActionLink to="/passer-le-test/1">
-          Passer le test
+        <CallToActionLink to="/faire-le-test/1">
+          Faire le test
         </CallToActionLink>
       </div>
       <div>

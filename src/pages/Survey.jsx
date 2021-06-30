@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import colors from "../utils/style/colors";
 
@@ -9,36 +9,38 @@ function Survey() {
   const questionNumber = parseInt(questionId);
 
   const [survey, setSurvey] = useState({});
-  //const [isDataLoading, setDataLoading] = useState(false);
+  const [isDataLoading, setDataLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    async function fetchSurvey() {
-      //setDataLoading(true);
+    async function fetchSurvey(dataSource) {
+      setDataLoading(true);
 
       try {
-        const response = await fetch("../data/sample-survey.json");
+        const response = await fetch(dataSource);
         const surveyData = await response.json();
 
         setSurvey(surveyData);
       } catch (err) {
         console.error(
-          `An error as occured while fetching ../data/sample-survey.json : ${err}`
+          `An error as occured while fetching ${dataSource} : ${err}`
         );
 
         setError(true);
       } finally {
-        //setDataLoading(false);
+        setDataLoading(false);
       }
     }
 
-    fetchSurvey();
+    fetchSurvey("../data/sample-survey.json");
   }, []);
 
   if (error) {
     return (
       <ErrorWrapper>
-        <ErrorText>Oups, il y a eu un problème</ErrorText>
+        <ErrorText>
+          Oups, il y a eu un problème pour récupérer les questions du test
+        </ErrorText>
         <CallToActionLink to="/">Revenir à l'accueil</CallToActionLink>
       </ErrorWrapper>
     );
@@ -56,7 +58,13 @@ function Survey() {
   return (
     <SurveyWrapper>
       <QuestionNumber>Question {questionNumber}</QuestionNumber>
-      <Question>{survey[questionNumber]}</Question>
+
+      {isDataLoading ? (
+        <Loader />
+      ) : (
+        <Question>{survey[questionNumber]}</Question>
+      )}
+
       <AnswersButtonsWrapper>
         <AnswerButton>Oui</AnswerButton>
         <AnswerButton>Non</AnswerButton>
@@ -64,11 +72,11 @@ function Survey() {
       <SurveyNav>
         <SurveyNavLink
           className="previousNavLink"
-          to={`/passer-le-test/${prevQuestionNumber}`}
+          to={`/Faire-le-test/${prevQuestionNumber}`}
         >
           Précédente
         </SurveyNavLink>
-        <SurveyNavLink to={`/passer-le-test/${nextQuestionNumber}`}>
+        <SurveyNavLink to={`/faire-le-test/${nextQuestionNumber}`}>
           Suivante
         </SurveyNavLink>
       </SurveyNav>
@@ -118,6 +126,23 @@ const QuestionNumber = styled.p`
 
   font-size: 1.5rem;
   font-weight: 700;
+`;
+
+const rotate = keyframes`
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const Loader = styled.p`
+  width: 0;
+  margin: 2.5rem auto;
+  padding: 1.5rem;
+  border: 0.5rem solid ${colors.primary500};
+  border-bottom-color: transparent;
+  border-radius: 50%;
+
+  animation: ${rotate} 500ms infinite linear;
 `;
 
 const Question = styled.h1`

@@ -44,7 +44,7 @@ async function initApp() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/passer-le-test/:questionId">
+          <Route path="/faire-le-test/:questionId">
             <Survey />
           </Route>
           <Route path="/freelances">

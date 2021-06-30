@@ -21,8 +21,8 @@ function Header() {
             <StyledLink to="/freelances">Nos freelances</StyledLink>
           </li>
           <li>
-            <StyledLink to="/passer-le-test/1" $isFullLink={true}>
-              Passer le test
+            <StyledLink to="/faire-le-test/1" $isFullLink={true}>
+              Faire le test
             </StyledLink>
           </li>
         </MainNavList>
