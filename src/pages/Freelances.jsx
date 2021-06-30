@@ -5,12 +5,12 @@ import colors from "../utils/style/colors";
 
 function Freelances(props) {
   return (
-    <FreelancesWrapper>
+    <FreelancesContainer>
       <MainTitle>Trouvez votre prestataire</MainTitle>
       <SubTitle>
         Chez Shiny nous réunissons les meilleurs profils pour vous.
       </SubTitle>
-      <CardsWrapper>
+      <CardsContainer>
         {props.freelancesProfiles.map((profile, index) => (
           <Card
             key={`${profile.name}-${index}`}
@@ -19,12 +19,12 @@ function Freelances(props) {
             jobTitle={profile.jobTitle}
           />
         ))}
-      </CardsWrapper>
-    </FreelancesWrapper>
+      </CardsContainer>
+    </FreelancesContainer>
   );
 }
 
-const FreelancesWrapper = styled.main`
+const FreelancesContainer = styled.main`
   text-align: center;
 `;
 
@@ -37,7 +37,7 @@ const SubTitle = styled.h2`
   font-size: 1.25rem;
 `;
 
-const CardsWrapper = styled.div`
+const CardsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;

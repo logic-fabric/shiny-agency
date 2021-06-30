@@ -6,11 +6,11 @@ import colors from "../utils/style/colors";
 
 function Card({ name, jobTitle, picture }) {
   return (
-    <CardWrapper>
+    <CardContainer>
       <CardJobTitle>{jobTitle}</CardJobTitle>
       <CardPicture src={picture} alt={`Portrait de ${name}`} />
       <CardName>{name}</CardName>
-    </CardWrapper>
+    </CardContainer>
   );
 }
 
@@ -24,7 +24,7 @@ Card.defaultProps = {
   picture: DefaultPicture,
 };
 
-const CardWrapper = styled.div`
+const CardContainer = styled.div`
   width: 17rem;
   margin: 1.5rem 2rem;
   padding: 2rem 3rem;

@@ -37,12 +37,12 @@ function Survey() {
 
   if (error) {
     return (
-      <ErrorWrapper>
+      <ErrorContainer>
         <ErrorText>
           Oups, il y a eu un problème pour récupérer les questions du test
         </ErrorText>
         <CallToActionLink to="/">Revenir à l'accueil</CallToActionLink>
-      </ErrorWrapper>
+      </ErrorContainer>
     );
   }
 
@@ -56,7 +56,7 @@ function Survey() {
   );
 
   return (
-    <SurveyWrapper>
+    <SurveyContainer>
       <QuestionNumber>Question {questionNumber}</QuestionNumber>
 
       {isDataLoading ? (
@@ -80,11 +80,11 @@ function Survey() {
           Suivante
         </SurveyNavLink>
       </SurveyNav>
-    </SurveyWrapper>
+    </SurveyContainer>
   );
 }
 
-const ErrorWrapper = styled.main`
+const ErrorContainer = styled.main`
   padding: 10rem 4rem;
 
   text-align: center;
@@ -114,7 +114,7 @@ const CallToActionLink = styled(Link)`
   background: ${colors.primary500};
 `;
 
-const SurveyWrapper = styled.main`
+const SurveyContainer = styled.main`
   text-align: center;
 `;
 

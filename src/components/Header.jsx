@@ -7,7 +7,7 @@ import ShinyTextLogo from "../assets/logo-text-shiny.png";
 
 function Header() {
   return (
-    <HeaderWrapper>
+    <HeaderContainer>
       <LogoLink to="/">
         <Logo src={ShinyLogo} alt="Shiny logo" />
         <img src={ShinyTextLogo} alt="Agence Shiny" />
@@ -27,11 +27,11 @@ function Header() {
           </li>
         </MainNavList>
       </nav>
-    </HeaderWrapper>
+    </HeaderContainer>
   );
 }
 
-const HeaderWrapper = styled.header`
+const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;

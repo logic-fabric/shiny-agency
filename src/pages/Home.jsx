@@ -6,7 +6,7 @@ import HomeIllustration from "../assets/home-illustration.png";
 
 function Home() {
   return (
-    <HomeWrapper>
+    <HomeContainer>
       <div>
         <Slogan>
           Repérez vos besoins, on s'occupe du reste, <br />
@@ -19,11 +19,11 @@ function Home() {
       <div>
         <img src={HomeIllustration} alt="" />
       </div>
-    </HomeWrapper>
+    </HomeContainer>
   );
 }
 
-const HomeWrapper = styled.main`
+const HomeContainer = styled.main`
   display: flex;
 
   padding: 11rem 6rem;
