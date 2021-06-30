@@ -1,10 +1,12 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 
+import getSampleSurvey from "../utils/data/sampleSurvey";
 import colors from "../utils/style/colors";
 
-function Survey(props) {
-  console.log(props.survey);
-  
+function Survey() {
+  useEffect(() => getSampleSurvey(), []);
+
   return (
     <SurveyWrapper>
       <QuestionNumber>Question 1</QuestionNumber>

@@ -66,7 +66,7 @@ const TECHNOS = {
 
 async function getRandomFreelance() {
   try {
-    let response = await fetch("https://randomuser.me/api/?nat=fr");
+    const response = await fetch("https://randomuser.me/api/?nat=fr");
 
     if (response.ok) {
       const data = await response.json();

@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 import Survey from "./pages/Survey";
 import Header from "./components/Header";
 import getRandomProfiles from "./utils/data/randomFreelance";
-import getSampleSurvey from "./utils/data/sampleSurvey";
 import colors from "./utils/style/colors";
 import reportWebVitals from "./reportWebVitals";
 
@@ -36,8 +35,6 @@ async function initApp() {
   const profilesQuantity = 4 + Math.ceil(Math.random() * 4);
   const freelancesProfiles = await getRandomProfiles(profilesQuantity);
 
-  const sampleSurvey = await getSampleSurvey();
-
   ReactDOM.render(
     <React.StrictMode>
       <Router>
@@ -48,7 +45,7 @@ async function initApp() {
             <Home />
           </Route>
           <Route path="/passer-le-test/:questionId">
-            <Survey survey={sampleSurvey} />
+            <Survey />
           </Route>
           <Route path="/freelances">
             <Freelances freelancesProfiles={freelancesProfiles} />

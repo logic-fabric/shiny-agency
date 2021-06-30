@@ -1,6 +1,6 @@
 async function getSampleSurvey() {
   try {
-    let response = await fetch("./data/sample-survey.json");
+    const response = await fetch("../data/sample-survey.json");
 
     if (response.ok) {
       const survey = await response.json();
