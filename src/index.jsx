@@ -7,6 +7,7 @@ import Error404 from "./pages/Error404";
 import Freelances from "./pages/Freelances";
 import Home from "./pages/Home";
 import Survey from "./pages/Survey";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import getRandomProfiles from "./utils/data/randomFreelance";
 import colors from "./utils/style/colors";
@@ -54,6 +55,7 @@ async function initApp() {
             <Error404 />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </React.StrictMode>,
     document.getElementById("root")
