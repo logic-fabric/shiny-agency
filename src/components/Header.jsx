@@ -1,27 +1,38 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import colors from "../utils/style/colors";
-import ShinyLogo from "../assets/logo-shiny.png";
-import ShinyTextLogo from "../assets/logo-text-shiny.png";
+import { ThemeContext } from "../utils/context/providers";
+import ShinyLogo from "../assets/logo-shiny.svg";
+import ShinyTextLogo from "../assets/logo-text-shiny.svg";
 
 function Header() {
+  const { theme } = useContext(ThemeContext);
   return (
     <HeaderContainer>
       <LogoLink to="/">
         <Logo src={ShinyLogo} alt="Shiny logo" />
-        <img src={ShinyTextLogo} alt="Agence Shiny" />
+        <TextLogo
+          src={ShinyTextLogo}
+          alt="Agence Shiny"
+          $isDarkTheme={theme === "dark"}
+        />
       </LogoLink>
       <nav>
         <MainNavList>
           <li>
-            <StyledLink to="/">Accueil</StyledLink>
+            <StyledLink to="/" $isDarkTheme={theme === "dark"}>
+              Accueil
+            </StyledLink>
           </li>
           <li>
-            <StyledLink to="/freelances">Nos freelances</StyledLink>
+            <StyledLink to="/freelances" $isDarkTheme={theme === "dark"}>
+              Nos freelances
+            </StyledLink>
           </li>
           <li>
-            <StyledLink to="/faire-le-test/1" $isFullLink={true}>
+            <StyledLink to="/faire-le-test/1" className="highlighted-link">
               Faire le test
             </StyledLink>
           </li>
@@ -50,6 +61,10 @@ const Logo = styled.img`
   margin-right: 0.75rem;
 `;
 
+const TextLogo = styled.img`
+  ${(props) => (props.$isDarkTheme ? `` : `filter: invert(100%)`)}
+`;
+
 const MainNavList = styled.ul`
   display: flex;
 
@@ -76,19 +91,19 @@ const StyledLink = styled(Link)`
     color: ${colors.primary500};
   }
 
-  ${(props) =>
-    props.$isFullLink &&
-    `
-      border-radius: 2rem;
+  &.highlighted-link {
+    border-radius: 2rem;
 
-      color: white;
-      
-      background-color: ${colors.primary500};
+    color: white;
 
-      &:hover {
-        color: ${colors.neutral100};
-      }
-    `}
+    background-color: ${colors.primary500};
+
+    &:hover {
+      color: ${colors.neutral100};
+    }
+  }
+
+  ${(props) => (props.$isDarkTheme ? `color: white;` : ``)}
 `;
 
 export default Header;
