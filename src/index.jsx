@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Error404 from "./pages/Error404";
 import Freelances from "./pages/Freelances";
 import Home from "./pages/Home";
+import Results from "./pages/Results";
 import Survey from "./pages/Survey";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -33,6 +34,9 @@ async function initApp() {
               </Route>
               <Route path="/freelances">
                 <Freelances freelancesProfiles={freelancesProfiles} />
+              </Route>
+              <Route path="/resultats">
+                <Results />
               </Route>
               <Route>
                 <Error404 />

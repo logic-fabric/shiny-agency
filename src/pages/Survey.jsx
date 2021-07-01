@@ -103,6 +103,9 @@ function Survey() {
         >
           Suivante
         </SurveyNavLink>
+        <SurveyNavLink to={`/resultats`} $isDarkTheme={theme === "dark"}>
+          Résultats
+        </SurveyNavLink>
       </SurveyNav>
     </SurveyContainer>
   );
