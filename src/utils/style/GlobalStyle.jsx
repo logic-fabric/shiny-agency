@@ -17,6 +17,8 @@ const ThemedGlobalStyle = createGlobalStyle`
     color: ${colors.neutral900};
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 400;
+
+    transition: 500ms;
   }
 
   body {

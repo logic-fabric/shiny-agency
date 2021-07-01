@@ -5,11 +5,14 @@ import { ThemeContext } from "../utils/context/providers";
 import colors from "../utils/style/colors";
 
 function Footer() {
-  const { toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <FooterContainer>
-      <ThemeSwitcher onClick={() => toggleTheme()}>
+    <FooterContainer $isDarkTheme={theme === "dark"}>
+      <ThemeSwitcher
+        onClick={() => toggleTheme()}
+        $isDarkTheme={theme === "dark"}
+      >
         Changer de thème
       </ThemeSwitcher>
     </FooterContainer>
@@ -22,6 +25,8 @@ const FooterContainer = styled.footer`
   padding: 2rem 4rem;
 
   background: ${colors.secondary500};
+
+  ${(props) => (props.$isDarkTheme ? `background: ${colors.neutral700};` : ``)}
 `;
 
 const ThemeSwitcher = styled.button`
@@ -37,6 +42,13 @@ const ThemeSwitcher = styled.button`
   background: ${colors.neutral100};
 
   cursor: pointer;
+
+  ${(props) =>
+    props.$isDarkTheme
+      ? `
+        color: white;
+        background: ${colors.neutral900}`
+      : ``}
 `;
 
 export default Footer;
