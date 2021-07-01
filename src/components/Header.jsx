@@ -63,7 +63,7 @@ const Logo = styled.img`
 `;
 
 const TextLogo = styled.img`
-  ${(props) => (props.$isDarkTheme ? `` : `filter: invert(100%)`)}
+  filter: ${(props) => (props.$isDarkTheme ? `` : `invert(100%)`)};
 `;
 
 const MainNavList = styled.ul`

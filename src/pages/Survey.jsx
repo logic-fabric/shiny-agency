@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
-import { ThemeContext } from "../utils/context/providers";
+import { SurveyContext, ThemeContext } from "../utils/context/providers";
 import colors from "../utils/style/colors";
 
 function Survey() {
   const { theme } = useContext(ThemeContext);
+  const { surveyAnswers, saveSurveyAnswers } = useContext(SurveyContext);
 
   const { questionId } = useParams();
   const questionNumber = parseInt(questionId);
@@ -58,6 +59,10 @@ function Survey() {
     `Question ${questionNumber} | prev = ${prevQuestionNumber} | next = ${nextQuestionNumber} | last = ${lastQuestionNumber}`
   );
 
+  function saveUserAnswer(answer) {
+    saveSurveyAnswers({ [questionNumber]: answer });
+  }
+
   return (
     <SurveyContainer>
       <QuestionNumber>Question {questionNumber}</QuestionNumber>
@@ -69,8 +74,20 @@ function Survey() {
       )}
 
       <AnswersButtonsWrapper>
-        <AnswerButton $isDarkTheme={theme === "dark"}>Oui</AnswerButton>
-        <AnswerButton $isDarkTheme={theme === "dark"}>Non</AnswerButton>
+        <AnswerButton
+          onClick={() => saveUserAnswer(true)}
+          $isSelected={surveyAnswers[questionNumber] === true}
+          $isDarkTheme={theme === "dark"}
+        >
+          Oui
+        </AnswerButton>
+        <AnswerButton
+          onClick={() => saveUserAnswer(false)}
+          $isSelected={surveyAnswers[questionNumber] === false}
+          $isDarkTheme={theme === "dark"}
+        >
+          Non
+        </AnswerButton>
       </AnswersButtonsWrapper>
       <SurveyNav>
         <SurveyNavLink
@@ -170,13 +187,26 @@ const AnswerButton = styled.button`
   border: 0.125rem solid transparent;
   border-radius: 2rem;
 
-  color: ${(props) => (props.$isDarkTheme ? `white` : `${colors.neutral900}`)};
+  color: ${(props) => {
+    return props.$isSelected
+      ? `white`
+      : props.$isDarkTheme
+      ? `white`
+      : `${colors.neutral900}`;
+  }};
+
   font-size: 1.5rem;
   font-weight: 700;
 
-  background: ${(props) =>
-    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
+  background: ${(props) => {
+    return props.$isSelected
+      ? `${colors.primary500}`
+      : props.$isDarkTheme
+      ? `${colors.neutral700}`
+      : `${colors.neutral100}`;
+  }};
 
+  cursor: pointer;
   transition: 200ms;
 
   &:hover {

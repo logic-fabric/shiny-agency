@@ -9,7 +9,7 @@ import Survey from "./pages/Survey";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import GlobalStyle from "./utils/style/GlobalStyle";
-import { ThemeProvider } from "./utils/context/providers";
+import { SurveyProvider, ThemeProvider } from "./utils/context/providers";
 import getRandomProfiles from "./utils/data/randomFreelance";
 import reportWebVitals from "./reportWebVitals";
 
@@ -21,23 +21,25 @@ async function initApp() {
     <React.StrictMode>
       <Router>
         <ThemeProvider>
-          <GlobalStyle />
-          <Header />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/faire-le-test/:questionId">
-              <Survey />
-            </Route>
-            <Route path="/freelances">
-              <Freelances freelancesProfiles={freelancesProfiles} />
-            </Route>
-            <Route>
-              <Error404 />
-            </Route>
-          </Switch>
-          <Footer />
+          <SurveyProvider>
+            <GlobalStyle />
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/faire-le-test/:questionId">
+                <Survey />
+              </Route>
+              <Route path="/freelances">
+                <Freelances freelancesProfiles={freelancesProfiles} />
+              </Route>
+              <Route>
+                <Error404 />
+              </Route>
+            </Switch>
+            <Footer />
+          </SurveyProvider>
         </ThemeProvider>
       </Router>
     </React.StrictMode>,
