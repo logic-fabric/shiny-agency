@@ -1,43 +1,21 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 import { SurveyContext, ThemeContext } from "../utils/context/providers";
+import { useFetch } from "../utils/hooks/useFetch";
 import colors from "../utils/style/colors";
+
+// TO DO: use react-query in prod instead of the custom useFetch
 
 function Survey() {
   const { theme } = useContext(ThemeContext);
   const { surveyAnswers, saveSurveyAnswers } = useContext(SurveyContext);
+  const { data, isDataLoading, error } = useFetch("../data/sample-survey.json");
+  const survey = data;
 
   const { questionId } = useParams();
   const questionNumber = parseInt(questionId);
-
-  const [survey, setSurvey] = useState({});
-  const [isDataLoading, setDataLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    async function fetchSurvey(dataSource) {
-      setDataLoading(true);
-
-      try {
-        const response = await fetch(dataSource);
-        const surveyData = await response.json();
-
-        setSurvey(surveyData);
-      } catch (err) {
-        console.error(
-          `An error as occured while fetching ${dataSource} : ${err}`
-        );
-
-        setError(true);
-      } finally {
-        setDataLoading(false);
-      }
-    }
-
-    fetchSurvey("../data/sample-survey.json");
-  }, []);
 
   if (error) {
     return (
@@ -54,7 +32,7 @@ function Survey() {
   const prevQuestionNumber = Math.max(1, questionNumber - 1);
   const nextQuestionNumber = Math.min(questionNumber + 1, lastQuestionNumber);
 
-  console.log(survey);
+  console.log("survey =", survey);
   console.log(
     `Question ${questionNumber} | prev = ${prevQuestionNumber} | next = ${nextQuestionNumber} | last = ${lastQuestionNumber}`
   );
