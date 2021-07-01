@@ -1,12 +1,16 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { ThemeContext } from "../utils/context/providers";
 import colors from "../utils/style/colors";
 import Error404Illustration from "../assets/404-illustration.png";
 
 function Error404() {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <Error404Container>
+    <Error404Container $isDarkTheme={theme === "dark"}>
       <ErrorText>Oups...</ErrorText>
       <ErrorIllustration src={Error404Illustration} alt="Erreur 404" />
       <ErrorText>Il semblerait qu'il y ait un problème</ErrorText>
@@ -20,7 +24,8 @@ const Error404Container = styled.main`
 
   text-align: center;
 
-  background: ${colors.neutral100};
+  background: ${(props) =>
+    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 `;
 
 const ErrorText = styled.p`
