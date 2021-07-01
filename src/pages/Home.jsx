@@ -1,20 +1,22 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { ThemeContext } from "../utils/context/providers";
 import colors from "../utils/style/colors";
 import HomeIllustration from "../assets/home-illustration.png";
 
 function Home() {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <HomeContainer>
+    <HomeContainer $isDarkTheme={theme === "dark"}>
       <div>
         <Slogan>
           Repérez vos besoins, on s'occupe du reste, <br />
           avec les meilleurs talents
         </Slogan>
-        <CallToActionLink to="/faire-le-test/1">
-          Faire le test
-        </CallToActionLink>
+        <CallToActionLink to="/faire-le-test/1">Faire le test</CallToActionLink>
       </div>
       <div>
         <img src={HomeIllustration} alt="" />
@@ -27,7 +29,9 @@ const HomeContainer = styled.main`
   display: flex;
 
   padding: 11rem 6rem;
-  background: ${colors.neutral100};
+
+  background: ${(props) =>
+    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 `;
 
 const Slogan = styled.h1`

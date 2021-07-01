@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import colors from "../utils/style/colors";
 import { ThemeContext } from "../utils/context/providers";
+import colors from "../utils/style/colors";
 import ShinyLogo from "../assets/logo-shiny.svg";
 import ShinyTextLogo from "../assets/logo-text-shiny.svg";
 
 function Header() {
   const { theme } = useContext(ThemeContext);
+
   return (
     <HeaderContainer>
       <LogoLink to="/">
@@ -102,8 +103,6 @@ const StyledLink = styled(Link)`
       color: ${colors.neutral100};
     }
   }
-
-  ${(props) => (props.$isDarkTheme ? `color: white;` : ``)}
 `;
 
 export default Header;
