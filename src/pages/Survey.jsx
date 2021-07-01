@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
+import { ThemeContext } from "../utils/context/providers";
 import colors from "../utils/style/colors";
 
 function Survey() {
+  const { theme } = useContext(ThemeContext);
+
   const { questionId } = useParams();
   const questionNumber = parseInt(questionId);
 
@@ -37,7 +40,7 @@ function Survey() {
 
   if (error) {
     return (
-      <ErrorContainer>
+      <ErrorContainer $isDarkTheme={theme === "dark"}>
         <ErrorText>
           Oups, il y a eu un problème pour récupérer les questions du test
         </ErrorText>
@@ -66,17 +69,21 @@ function Survey() {
       )}
 
       <AnswersButtonsWrapper>
-        <AnswerButton>Oui</AnswerButton>
-        <AnswerButton>Non</AnswerButton>
+        <AnswerButton $isDarkTheme={theme === "dark"}>Oui</AnswerButton>
+        <AnswerButton $isDarkTheme={theme === "dark"}>Non</AnswerButton>
       </AnswersButtonsWrapper>
       <SurveyNav>
         <SurveyNavLink
           className="previousNavLink"
           to={`/Faire-le-test/${prevQuestionNumber}`}
+          $isDarkTheme={theme === "dark"}
         >
           Précédente
         </SurveyNavLink>
-        <SurveyNavLink to={`/faire-le-test/${nextQuestionNumber}`}>
+        <SurveyNavLink
+          to={`/faire-le-test/${nextQuestionNumber}`}
+          $isDarkTheme={theme === "dark"}
+        >
           Suivante
         </SurveyNavLink>
       </SurveyNav>
@@ -89,7 +96,8 @@ const ErrorContainer = styled.main`
 
   text-align: center;
 
-  background: ${colors.neutral100};
+  background: ${(props) =>
+    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 `;
 
 const ErrorText = styled.p`
@@ -162,16 +170,19 @@ const AnswerButton = styled.button`
   border: 0.125rem solid transparent;
   border-radius: 2rem;
 
-  color: ${colors.neutral900};
+  color: ${(props) => (props.$isDarkTheme ? `white` : `${colors.neutral900}`)};
   font-size: 1.5rem;
   font-weight: 700;
 
-  background: ${colors.neutral100};
+  background: ${(props) =>
+    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 
   transition: 200ms;
 
   &:hover {
     border-color: ${colors.primary500};
+    border-color: ${(props) =>
+      props.$isDarkTheme ? `${colors.neutral200}` : `${colors.primary500}`};
   }
 `;
 
@@ -185,6 +196,7 @@ const SurveyNavLink = styled(Link)`
   margin: 0 0.5rem;
   padding: 0.5rem;
 
+  color: ${(props) => (props.$isDarkTheme ? `white` : `${colors.neutral900}`)};
   font-size: 1.1rem;
   text-align: left;
   text-decoration: underline;
