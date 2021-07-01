@@ -1,13 +1,17 @@
+import { useContext } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import DefaultPicture from "../assets/profile.png";
+import { ThemeContext } from "../utils/context/providers";
 import colors from "../utils/style/colors";
+import DefaultPicture from "../assets/profile.png";
 
 function Card({ name, jobTitle, picture }) {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <CardContainer>
-      <CardJobTitle>{jobTitle}</CardJobTitle>
+    <CardContainer $isDarkTheme={theme === "dark"}>
+      <CardJobTitle $isDarkTheme={theme === "dark"}>{jobTitle}</CardJobTitle>
       <CardPicture src={picture} alt={`Portrait de ${name}`} />
       <CardName>{name}</CardName>
     </CardContainer>
@@ -28,24 +32,29 @@ const CardContainer = styled.div`
   width: 17rem;
   margin: 1.5rem 2rem;
   padding: 2rem 3rem;
+  border: 0.125rem solid transparent;
   border-radius: 0.5rem;
 
   text-align: center;
 
-  background: ${colors.neutral100};
+  background: ${(props) =>
+    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 
   cursor: pointer;
   transition: 200ms;
 
   &:hover {
-    box-shadow: 0.125rem 0.25rem 1rem ${colors.neutral200};
+    border-color: ${colors.primary500};
+    border-color: ${(props) =>
+      props.$isDarkTheme ? `${colors.neutral200}` : `${colors.primary500}`};
   }
 `;
 
 const CardJobTitle = styled.h3`
   margin: 0;
 
-  color: ${colors.primary500};
+  color: ${(props) =>
+    props.$isDarkTheme ? `${colors.neutral200}` : `${colors.primary500}`};
   font-size: 1.25rem;
   font-weight: 700;
   text-align: left;
