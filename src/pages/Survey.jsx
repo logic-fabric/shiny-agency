@@ -43,7 +43,11 @@ function Survey() {
   function saveUserAnswer(answer) {
     saveSurveyAnswers({ [questionNumber]: answer });
 
-    history.push(`/faire-le-test/${nextQuestionNumber}`);
+    if (questionNumber === lastQuestionNumber) {
+      history.push(`/resultats`);
+    } else {
+      history.push(`/faire-le-test/${nextQuestionNumber}`);
+    }
   }
 
   return (
@@ -76,20 +80,22 @@ function Survey() {
       </AnswersButtonsWrapper>
       <SurveyNav>
         <SurveyNavLink
-          className="previousNavLink"
+          className={`previousNavLink${
+            questionNumber === 1 ? ` disabled` : ``
+          }`}
           to={`/faire-le-test/${prevQuestionNumber}`}
           $isDarkTheme={theme === "dark"}
         >
           Précédente
         </SurveyNavLink>
         <SurveyNavLink
+          className={`${
+            questionNumber === lastQuestionNumber ? `disabled` : ``
+          }`}
           to={`/faire-le-test/${nextQuestionNumber}`}
           $isDarkTheme={theme === "dark"}
         >
           Suivante
-        </SurveyNavLink>
-        <SurveyNavLink to={`/resultats`} $isDarkTheme={theme === "dark"}>
-          Résultats
         </SurveyNavLink>
       </SurveyNav>
     </SurveyContainer>
@@ -223,6 +229,11 @@ const SurveyNavLink = styled(Link)`
 
   &.previousNavLink {
     text-align: right;
+  }
+
+  &.disabled {
+    color: ${colors.neutral300};
+    text-decoration: none;
   }
 `;
 
