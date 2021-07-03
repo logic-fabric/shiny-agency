@@ -4,9 +4,23 @@ import ErrorMain from "../components/ErrorMain";
 import { SurveyContext } from "../utils/context/providers";
 import { useFetch } from "../utils/hooks/useFetch";
 
+function setNeededSkillsFromUserAnswers(survey, surveyAnswers) {
+  const neededSkills = new Set();
+
+  for (let key in surveyAnswers) {
+    const associatedSkills = survey.questions[key].associatedSkills;
+
+    if (surveyAnswers[key]) {
+      for (let skill of associatedSkills) neededSkills.add(skill);
+    }
+  }
+
+  return [...neededSkills].join(", ");
+}
+
 function Results() {
   const { surveyAnswers } = useContext(SurveyContext);
-  const { data, error } = useFetch("../data/sample-survey.json");
+  const { data, isDataLoading, error } = useFetch("../data/sample-survey.json");
   const survey = data;
 
   console.log("survey =", survey);
@@ -18,9 +32,13 @@ function Results() {
     );
   }
 
+  const neededSkills = isDataLoading
+    ? "en calcul"
+    : setNeededSkillsFromUserAnswers(survey, surveyAnswers);
+
   return (
     <main>
-      <h1>Les compétences dont vous avez besoin</h1>
+      <h1>Les compétences dont vous avez besoin : {neededSkills}</h1>
     </main>
   );
 }

@@ -2,32 +2,41 @@
   "questions": {
     "1": {
       "question": "Avez-vous déjà des maquettes pour l'application que vous voulez créer ?",
-      "asociatedSkill": "ui"
+      "associatedSkills": ["UI design", "UX design"]
     },
 
     "2": {
       "question": "Le site comporte-t-il une fonction d'authentification ?",
-      "associatedSkill": "back"
+      "associatedSkills": ["front-end", "back-end"]
     },
 
     "3": {
       "question": "Votre site doit-il sauvegarder des données entrées par vos utilisateurs ?",
-      "associatedSkill": "back"
+      "associatedSkills": ["back-end"]
     },
 
     "4": {
       "question": "Souhaitez-vous avoir plusieurs types de comptes pour votre application (administrateur, visiteur, utilisateur, etc). ?",
-      "associatedSkill": "back"
+      "associatedSkills": ["front-end", "back-end"]
     },
 
     "5": {
       "question": "Avez-vous prévu une version mobile à part entière ?",
-      "associatedSkill": "mobile"
+      "associatedSkills": ["mobile"]
     },
 
     "6": {
       "question": "Votre application doit-elle impérativement apparaître en premier dans les résultats de recherche ?",
-      "associatedSkill": "seo"
+      "associatedSkills": ["SEO"]
     }
+  },
+
+  "jobs": {
+    "UI design": "Le designer UI prend en charge les maquettes et graphismes du site.",
+    "UX design": "Le designer UX veille à l'ergonomie et au confort d'utilisation du site.",
+    "front-end": "Le développeur front-end s'occupe du rendu du site dans le navigateur de l'utilisateur.",
+    "back-end": "Le développeur back-end se charge de la partie émergée du site, côté serveur, comme l'interaction avec une base de données.",
+    "mobile": "Le développeur mobile conçoit des applications mobiles natives, pour iOS ou pour Android.",
+    "SEO": "L'expert SEO améliore la visibilité du site par son bon positionnement dans les résultats des moteurs de rercherche."
   }
 }
