@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 import { SurveyContext, ThemeContext } from "../utils/context/providers";
@@ -9,6 +9,7 @@ import colors from "../utils/style/colors";
 // TO DO: use react-query in prod instead of the custom useFetch
 
 function Survey() {
+  const history = useHistory();
   const { theme } = useContext(ThemeContext);
   const { surveyAnswers, saveSurveyAnswers } = useContext(SurveyContext);
   const { data, isDataLoading, error } = useFetch("../data/sample-survey.json");
@@ -41,6 +42,8 @@ function Survey() {
 
   function saveUserAnswer(answer) {
     saveSurveyAnswers({ [questionNumber]: answer });
+
+    history.push(`/faire-le-test/${nextQuestionNumber}`);
   }
 
   return (
@@ -74,7 +77,7 @@ function Survey() {
       <SurveyNav>
         <SurveyNavLink
           className="previousNavLink"
-          to={`/Faire-le-test/${prevQuestionNumber}`}
+          to={`/faire-le-test/${prevQuestionNumber}`}
           $isDarkTheme={theme === "dark"}
         >
           Précédente
