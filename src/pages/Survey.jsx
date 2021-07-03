@@ -28,7 +28,9 @@ function Survey() {
     );
   }
 
-  const lastQuestionNumber = Object.keys(survey).length;
+  const lastQuestionNumber = survey.questions
+    ? Object.keys(survey.questions).length
+    : 1;
   const prevQuestionNumber = Math.max(1, questionNumber - 1);
   const nextQuestionNumber = Math.min(questionNumber + 1, lastQuestionNumber);
 
@@ -48,7 +50,9 @@ function Survey() {
       {isDataLoading ? (
         <Loader />
       ) : (
-        <Question>{survey[questionNumber]}</Question>
+        <Question>
+          {survey ? survey.questions[questionNumber].question : ""}
+        </Question>
       )}
 
       <AnswersButtonsWrapper>

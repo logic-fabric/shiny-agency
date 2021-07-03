@@ -1,8 +1,33 @@
 {
-  "1": "Votre site doit-il sauvegarder des données entrées par vos utilisateurs ?",
-  "2": "Votre application doit-elle impérativement apparaître en premier dans les résultats de recherche ?",
-  "3": "Avez-vous déjà des maquettes pour l'application que vous voulez créer ?",
-  "4": "Le site comporte-t-il une fonction d'authentification ?",
-  "5": "Souhaitez-vous avoir plusieurs types de comptes pour votre application (administrateur, visiteur, utilisateur, etc). ?",
-  "6": "Avez-vous prévu une version mobile à part entière ?"
+  "questions": {
+    "1": {
+      "question": "Avez-vous déjà des maquettes pour l'application que vous voulez créer ?",
+      "asociatedSkill": "ui"
+    },
+
+    "2": {
+      "question": "Le site comporte-t-il une fonction d'authentification ?",
+      "associatedSkill": "back"
+    },
+
+    "3": {
+      "question": "Votre site doit-il sauvegarder des données entrées par vos utilisateurs ?",
+      "associatedSkill": "back"
+    },
+
+    "4": {
+      "question": "Souhaitez-vous avoir plusieurs types de comptes pour votre application (administrateur, visiteur, utilisateur, etc). ?",
+      "associatedSkill": "back"
+    },
+
+    "5": {
+      "question": "Avez-vous prévu une version mobile à part entière ?",
+      "associatedSkill": "mobile"
+    },
+
+    "6": {
+      "question": "Votre application doit-elle impérativement apparaître en premier dans les résultats de recherche ?",
+      "associatedSkill": "seo"
+    }
+  }
 }
