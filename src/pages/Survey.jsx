@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
+import ErrorMain from "../components/ErrorMain";
 import { SurveyContext, ThemeContext } from "../utils/context/providers";
 import { useFetch } from "../utils/hooks/useFetch";
 import colors from "../utils/style/colors";
@@ -20,12 +21,7 @@ function Survey() {
 
   if (error) {
     return (
-      <ErrorContainer $isDarkTheme={theme === "dark"}>
-        <ErrorText>
-          Oups, il y a eu un problème pour récupérer les questions du test
-        </ErrorText>
-        <CallToActionLink to="/">Revenir à l'accueil</CallToActionLink>
-      </ErrorContainer>
+      <ErrorMain errorText="Oups, il y a eu un problème pour récupérer les questions du test" />
     );
   }
 
@@ -101,37 +97,6 @@ function Survey() {
     </SurveyContainer>
   );
 }
-
-const ErrorContainer = styled.main`
-  padding: 10rem 4rem;
-
-  text-align: center;
-
-  background: ${(props) =>
-    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
-`;
-
-const ErrorText = styled.p`
-  margin: 1rem;
-
-  font-size: 2rem;
-  font-weight: 700;
-`;
-
-const CallToActionLink = styled(Link)`
-  display: inline-block;
-
-  margin: 4rem 0 0 0;
-  padding: 0.5rem 4rem;
-  border-radius: 2rem;
-
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-decoration: none;
-
-  background: ${colors.primary500};
-`;
 
 const SurveyContainer = styled.main`
   text-align: center;
