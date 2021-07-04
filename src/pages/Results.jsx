@@ -8,13 +8,13 @@ import { useFetch } from "../utils/hooks/useFetch";
 import colors from "../utils/style/colors";
 import NoSkillNeededIllustration from "../assets/no-skill-needed.png";
 
-function setNeededSkillsFromUserAnswers(survey, surveyAnswers) {
+function determineNeededSkills(survey, userAnswers) {
   const neededSkills = new Set();
 
-  for (let key in surveyAnswers) {
+  for (let key in userAnswers) {
     const associatedSkills = survey.questions[key].associatedSkills;
 
-    if (surveyAnswers[key]) {
+    if (userAnswers[key]) {
       for (let skill of associatedSkills) neededSkills.add(skill);
     }
   }
@@ -39,7 +39,7 @@ function Results() {
 
   const neededSkills = isDataLoading
     ? []
-    : setNeededSkillsFromUserAnswers(survey, surveyAnswers);
+    : determineNeededSkills(survey, surveyAnswers);
 
   console.log("neededSkills =", neededSkills);
 
@@ -59,6 +59,16 @@ function Results() {
   }
 
   const skillsSummary = neededSkills.join(", ");
+  const skillsDetails = [];
+
+  for (let skill of neededSkills) {
+    skillsDetails.push({
+      jobTitle: skill,
+      jobDescription: survey.jobs[skill],
+    });
+  }
+
+  console.log("skillsDetails =", skillsDetails);
 
   return (
     <ResultsContainer $isDarkTheme={theme === "dark"}>
@@ -74,10 +84,16 @@ function Results() {
         </CallToActionLink>
       </CallToActionContainer>
       <JobsDetails>
-        <JobTitle $isDarkTheme={theme === "dark"}>UI designer</JobTitle>
-        <JobDescription>
-          Le designer UI prend en charge les maquettes et graphismes du site.
-        </JobDescription>
+        {skillsDetails.map((skill) => {
+          return (
+            <div key={`job-detail-${skill.jobTitle}`}>
+              <JobTitle $isDarkTheme={theme === "dark"}>
+                {skill.jobTitle}
+              </JobTitle>
+              <JobDescription>{skill.jobDescription}</JobDescription>
+            </div>
+          );
+        })}
       </JobsDetails>
     </ResultsContainer>
   );
@@ -108,7 +124,7 @@ const NoSkillText = styled.p`
 `;
 
 const ResultsContainer = styled.main`
-  padding: 11rem 6rem;
+  padding: 9rem 6rem;
 
   background: ${(props) =>
     props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
@@ -152,11 +168,15 @@ const JobsDetails = styled.div`
 `;
 
 const JobTitle = styled.h2`
+  margin: 2rem 0 0.5rem 0;
+
   color: ${(props) =>
     props.$isDarkTheme ? `${colors.neutral300}` : `${colors.primary500}`};
 `;
 
 const JobDescription = styled.p`
+  margin: 0;
+
   font-size: 1.3rem;
 `;
 

@@ -22,12 +22,12 @@
 
     "5": {
       "question": "Avez-vous prévu une version mobile à part entière ?",
-      "associatedSkills": ["mobile"]
+      "associatedSkills": ["développement mobile"]
     },
 
     "6": {
       "question": "Votre application doit-elle impérativement apparaître en premier dans les résultats de recherche ?",
-      "associatedSkills": ["SEO"]
+      "associatedSkills": ["expertise SEO"]
     }
   },
 
@@ -36,7 +36,7 @@
     "UX design": "Le designer UX veille à l'ergonomie et au confort d'utilisation du site.",
     "front-end": "Le développeur front-end s'occupe du rendu du site dans le navigateur de l'utilisateur.",
     "back-end": "Le développeur back-end se charge de la partie émergée du site, côté serveur, comme l'interaction avec une base de données.",
-    "mobile": "Le développeur mobile conçoit des applications mobiles natives, pour iOS ou pour Android.",
-    "SEO": "L'expert SEO améliore la visibilité du site par son bon positionnement dans les résultats des moteurs de rercherche."
+    "développement mobile": "Le développeur mobile conçoit des applications mobiles natives, pour iOS ou pour Android.",
+    "expertise SEO": "L'expert SEO améliore la visibilité du site par un bon positionnement dans les résultats des moteurs de rercherche."
   }
 }
