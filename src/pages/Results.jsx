@@ -6,6 +6,7 @@ import ErrorMain from "../components/ErrorMain";
 import { SurveyContext, ThemeContext } from "../utils/context/providers";
 import { useFetch } from "../utils/hooks/useFetch";
 import colors from "../utils/style/colors";
+import NoSkillNeededIllustration from "../assets/no-skill-needed.png";
 
 function setNeededSkillsFromUserAnswers(survey, surveyAnswers) {
   const neededSkills = new Set();
@@ -18,7 +19,7 @@ function setNeededSkillsFromUserAnswers(survey, surveyAnswers) {
     }
   }
 
-  return [...neededSkills].join(", ");
+  return [...neededSkills];
 }
 
 function Results() {
@@ -37,20 +38,39 @@ function Results() {
   }
 
   const neededSkills = isDataLoading
-    ? "en calcul"
+    ? []
     : setNeededSkillsFromUserAnswers(survey, surveyAnswers);
+
+  console.log("neededSkills =", neededSkills);
+
+  if (neededSkills.length === 0) {
+    return (
+      <NoSkillContainer $isDarkTheme={theme === "dark"}>
+        <NoSkillHeadline>Dommage...</NoSkillHeadline>
+        <NoSkillIllustration src={NoSkillNeededIllustration} alt="Erreur 404" />
+        <NoSkillText>
+          Il semblerait que vous n'ayez besoin d'aucune compétence
+        </NoSkillText>
+        <CallToActionLink to="/freelances">
+          Découvrez nos talents
+        </CallToActionLink>
+      </NoSkillContainer>
+    );
+  }
+
+  const skillsSummary = neededSkills.join(", ");
 
   return (
     <ResultsContainer $isDarkTheme={theme === "dark"}>
       <ResultsTitle>
         Les compétences dont vous avez besoin&nbsp;:{" "}
         <NeededSkillsSpan $isDarkTheme={theme === "dark"}>
-          {neededSkills}
+          {skillsSummary}
         </NeededSkillsSpan>
       </ResultsTitle>
       <CallToActionContainer>
         <CallToActionLink to="/freelances">
-          Découvrez nos profils
+          Découvrez nos talents
         </CallToActionLink>
       </CallToActionContainer>
       <JobsDetails>
@@ -62,6 +82,30 @@ function Results() {
     </ResultsContainer>
   );
 }
+
+const NoSkillContainer = styled.main`
+  padding: 4rem;
+
+  text-align: center;
+
+  background: ${(props) =>
+    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
+`;
+
+const NoSkillHeadline = styled.p`
+  margin: 1rem;
+
+  font-size: 2rem;
+  font-weight: 700;
+`;
+
+const NoSkillIllustration = styled.img`
+  margin: 3rem 0;
+`;
+
+const NoSkillText = styled.p`
+  font-size: 1.3rem;
+`;
 
 const ResultsContainer = styled.main`
   padding: 11rem 6rem;
