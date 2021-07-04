@@ -8,7 +8,7 @@ import { useFetch } from "../utils/hooks/useFetch";
 import colors from "../utils/style/colors";
 import NoSkillNeededIllustration from "../assets/no-skill-needed.png";
 
-function determineNeededSkills(survey, userAnswers) {
+export function determineNeededSkills(survey, userAnswers) {
   const neededSkills = new Set();
 
   for (let key in userAnswers) {
