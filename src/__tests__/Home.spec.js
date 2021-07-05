@@ -4,15 +4,19 @@ import { render, screen } from "@testing-library/react";
 import Home from "../pages/Home";
 import { ThemeProvider } from "../utils/context/providers";
 
+function renderUI(ui) {
+  const uiWrapper = ({ children }) => (
+    <MemoryRouter>
+      <ThemeProvider>{children}</ThemeProvider>
+    </MemoryRouter>
+  );
+
+  render(ui, { wrapper: uiWrapper });
+}
+
 describe("GIVEN the Home page component", () => {
   beforeEach(() => {
-    render(
-      <MemoryRouter>
-        <ThemeProvider>
-          <Home />
-        </ThemeProvider>
-      </MemoryRouter>
-    );
+    renderUI(<Home />);
   });
 
   describe("WHEN Home is called for rendering", () => {

@@ -4,12 +4,16 @@ import Card from "../components/Card";
 import { ThemeProvider } from "../utils/context/providers";
 import DefaultProfile from "../assets/profile.png";
 
+function renderUI(ui) {
+  const uiWrapper = ({ children }) => <ThemeProvider>{children}</ThemeProvider>;
+
+  render(ui, { wrapper: uiWrapper });
+}
+
 describe("GIVEN a name, a jobTitle and a picture to ca Card component", () => {
   beforeEach(() => {
-    render(
-      <ThemeProvider>
-        <Card name="John Doe" jobTitle="Designer UI" picture={DefaultProfile} />
-      </ThemeProvider>
+    renderUI(
+      <Card name="John Doe" jobTitle="Designer UI" picture={DefaultProfile} />
     );
   });
 

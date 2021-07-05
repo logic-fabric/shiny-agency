@@ -3,13 +3,15 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import Footer from "../components/Footer";
 import { ThemeProvider } from "../utils/context/providers";
 
+function renderUI(ui) {
+  const uiWrapper = ({ children }) => <ThemeProvider>{children}</ThemeProvider>;
+
+  render(ui, { wrapper: uiWrapper });
+}
+
 describe("GIVEN the Footer component", () => {
   beforeEach(() => {
-    render(
-      <ThemeProvider>
-        <Footer />
-      </ThemeProvider>
-    );
+    renderUI(<Footer />);
   });
 
   describe("WHEN Footer is called for rendering", () => {
