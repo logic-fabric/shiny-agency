@@ -6,6 +6,8 @@ import colors from "../utils/style/colors";
 
 function Footer() {
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const themeMessage =
+    theme === "dark" ? "Passer en mode clair" : "Passer en mode sombre";
 
   return (
     <FooterContainer $isDarkTheme={theme === "dark"}>
@@ -13,7 +15,7 @@ function Footer() {
         onClick={() => toggleTheme()}
         $isDarkTheme={theme === "dark"}
       >
-        Changer de thème
+        {themeMessage}
       </ThemeSwitcher>
     </FooterContainer>
   );
