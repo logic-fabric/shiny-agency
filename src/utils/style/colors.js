@@ -1,4 +1,5 @@
 const colors = {
+  primary100: "#e9e6fe",
   primary500: "#5843e4",
 
   secondary500: "#8186a0",
