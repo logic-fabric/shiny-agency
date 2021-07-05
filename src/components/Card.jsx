@@ -14,12 +14,14 @@ function Card({ name, jobTitle, picture }) {
     <CardContainer
       onClick={() => setIsFavorite(!isFavorite)}
       $isDarkTheme={theme === "dark"}
+      data-testid={`card-${name.replace(" ", "")}`}
     >
       <CardJobTitle $isDarkTheme={theme === "dark"}>{jobTitle}</CardJobTitle>
       <CardPicture src={picture} alt={`Portrait de ${name}`} />
       <CardStar
         $isFavorite={isFavorite}
         $isDarkTheme={theme === "dark"}
+        data-testid={`star-icon-${name.replace(" ", "")}`}
       ></CardStar>
       <CardName>{name}</CardName>
     </CardContainer>
@@ -88,7 +90,7 @@ const CardStar = styled.span`
   }
 `;
 
-const CardJobTitle = styled.h3`
+const CardJobTitle = styled.h2`
   min-height: 3.5rem;
   margin: 0;
 
@@ -107,7 +109,7 @@ const CardPicture = styled.img`
   border-radius: 50%;
 `;
 
-const CardName = styled.h4`
+const CardName = styled.h3`
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;

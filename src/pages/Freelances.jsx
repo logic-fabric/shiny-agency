@@ -37,7 +37,9 @@ const MainTitle = styled.h1`
   font-size: 2rem;
 `;
 
-const SubTitle = styled.h2`
+const SubTitle = styled.p`
+  margin: 1rem 0;
+  
   color: ${(props) =>
     props.$isDarkTheme ? `${colors.neutral200}` : `${colors.secondary500}`};
   font-size: 1.25rem;
