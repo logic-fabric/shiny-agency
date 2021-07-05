@@ -13,8 +13,7 @@ function Home() {
     <HomeContainer $isDarkTheme={theme === "dark"}>
       <div>
         <Slogan>
-          Repérez vos besoins, on s'occupe du reste, <br />
-          avec les meilleurs talents
+          Repérez vos besoins, on s'occupe du reste, avec les meilleurs talents
         </Slogan>
         <CallToActionLink to="/faire-le-test/1">Faire le test</CallToActionLink>
       </div>
