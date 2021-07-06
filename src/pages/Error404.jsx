@@ -7,6 +7,8 @@ import colors from "../utils/style/colors";
 import Error404Illustration from "../assets/404-illustration.png";
 
 function Error404() {
+  window.scrollTo(0, 0);
+  
   const { theme } = useContext(ThemeContext);
 
   return (

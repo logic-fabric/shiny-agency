@@ -19,6 +19,8 @@ const ThemedGlobalStyle = createGlobalStyle`
     font-weight: 400;
 
     transition: 500ms;
+
+    scroll-behavior: smooth;
   }
 
   body {

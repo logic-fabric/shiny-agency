@@ -6,6 +6,8 @@ import { ThemeContext } from "../utils/context/providers";
 import colors from "../utils/style/colors";
 
 function Freelances(props) {
+  window.scrollTo(0, 0);
+
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -39,7 +41,7 @@ const MainTitle = styled.h1`
 
 const SubTitle = styled.p`
   margin: 1rem 0;
-  
+
   color: ${(props) =>
     props.$isDarkTheme ? `${colors.neutral200}` : `${colors.secondary500}`};
   font-size: 1.25rem;
