@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { ThemeContext } from "../utils/context/providers";
+import { SurveyContext, ThemeContext } from "../utils/context/providers";
 import colors from "../utils/style/colors";
 import ShinyLogo from "../assets/logo-shiny.svg";
 import ShinyTextLogo from "../assets/logo-text-shiny.svg";
 
 function Header() {
   const { theme } = useContext(ThemeContext);
+  const { clearSurveyAnswers } = useContext(SurveyContext);
 
   return (
     <HeaderContainer>
@@ -33,7 +34,14 @@ function Header() {
             </StyledLink>
           </li>
           <li>
-            <StyledLink to="/faire-le-test/1" className="highlighted-link">
+            <StyledLink
+              onClick={() => {
+                window.scrollTo(0, 0);
+                clearSurveyAnswers();
+              }}
+              to="/faire-le-test/1"
+              className="highlighted-link"
+            >
               Faire le test
             </StyledLink>
           </li>

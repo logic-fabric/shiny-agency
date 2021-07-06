@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { ThemeContext } from "../utils/context/providers";
+import { SurveyContext, ThemeContext } from "../utils/context/providers";
 import colors from "../utils/style/colors";
 import HomeIllustration from "../assets/home-illustration.png";
 
@@ -10,6 +10,7 @@ function Home() {
   window.scrollTo(0, 0);
 
   const { theme } = useContext(ThemeContext);
+  const { clearSurveyAnswers } = useContext(SurveyContext);
 
   return (
     <HomeContainer $isDarkTheme={theme === "dark"}>
@@ -17,7 +18,15 @@ function Home() {
         <Slogan>
           Repérez vos besoins, on s'occupe du reste, avec les meilleurs talents
         </Slogan>
-        <CallToActionLink to="/faire-le-test/1">Faire le test</CallToActionLink>
+        <CallToActionLink
+          onClick={() => {
+            window.scrollTo(0, 0);
+            clearSurveyAnswers();
+          }}
+          to="/faire-le-test/1"
+        >
+          Faire le test
+        </CallToActionLink>
       </div>
       <div>
         <img src={HomeIllustration} alt="" />

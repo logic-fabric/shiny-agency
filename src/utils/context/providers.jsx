@@ -9,9 +9,12 @@ export const SurveyProvider = ({ children }) => {
   const saveSurveyAnswers = (newAnswers) => {
     setSurveyAnswers({ ...surveyAnswers, ...newAnswers });
   };
+  const clearSurveyAnswers = () => setSurveyAnswers({});
 
   return (
-    <SurveyContext.Provider value={{ surveyAnswers, saveSurveyAnswers }}>
+    <SurveyContext.Provider
+      value={{ surveyAnswers, saveSurveyAnswers, clearSurveyAnswers }}
+    >
       {children}
     </SurveyContext.Provider>
   );
