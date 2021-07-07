@@ -40,6 +40,7 @@ function Survey() {
     saveSurveyAnswers({ [questionNumber]: answer });
 
     if (questionNumber === lastQuestionNumber) {
+      window.scrollTo(0, 0);
       history.push(`/resultats`);
     } else {
       history.push(`/faire-le-test/${nextQuestionNumber}`);

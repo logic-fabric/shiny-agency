@@ -24,12 +24,24 @@ function Header() {
       <nav>
         <MainNavList>
           <li>
-            <StyledLink to="/" $isDarkTheme={theme === "dark"}>
+            <StyledLink
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+              to="/"
+              $isDarkTheme={theme === "dark"}
+            >
               Accueil
             </StyledLink>
           </li>
           <li>
-            <StyledLink to="/freelances" $isDarkTheme={theme === "dark"}>
+            <StyledLink
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+              to="/freelances"
+              $isDarkTheme={theme === "dark"}
+            >
               Nos freelances
             </StyledLink>
           </li>

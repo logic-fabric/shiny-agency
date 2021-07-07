@@ -23,8 +23,6 @@ export function determineNeededSkills(survey, userAnswers) {
 }
 
 function Results() {
-  window.scrollTo(0, 0);
-
   const { theme } = useContext(ThemeContext);
   const { surveyAnswers } = useContext(SurveyContext);
   const { data, isDataLoading, error } = useFetch("../data/sample-survey.json");

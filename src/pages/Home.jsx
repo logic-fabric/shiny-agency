@@ -7,8 +7,6 @@ import colors from "../utils/style/colors";
 import HomeIllustration from "../assets/home-illustration.png";
 
 function Home() {
-  window.scrollTo(0, 0);
-
   const { theme } = useContext(ThemeContext);
   const { clearSurveyAnswers } = useContext(SurveyContext);
 

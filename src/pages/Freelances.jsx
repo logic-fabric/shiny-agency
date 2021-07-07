@@ -6,8 +6,6 @@ import { ThemeContext } from "../utils/context/providers";
 import colors from "../utils/style/colors";
 
 function Freelances(props) {
-  window.scrollTo(0, 0);
-
   const { theme } = useContext(ThemeContext);
 
   return (
