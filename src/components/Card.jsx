@@ -11,14 +11,11 @@ function Card({ name, jobTitle, picture }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   return (
-    <CardContainer
-      onClick={() => setIsFavorite(!isFavorite)}
-      $isDarkTheme={theme === "dark"}
-      data-testid={`card-${name.replace(" ", "")}`}
-    >
+    <CardContainer $isDarkTheme={theme === "dark"}>
       <CardJobTitle $isDarkTheme={theme === "dark"}>{jobTitle}</CardJobTitle>
       <CardPicture src={picture} alt={`Portrait de ${name}`} />
       <CardStar
+        onClick={() => setIsFavorite(!isFavorite)}
         $isFavorite={isFavorite}
         $isDarkTheme={theme === "dark"}
         data-testid={`star-icon-${name.replace(" ", "")}`}
@@ -66,9 +63,9 @@ const CardStar = styled.span`
   top: 6rem;
   right: 5rem;
 
-  opacity: ${(props) => (props.$isFavorite ? 1 : 0)};
+  filter: ${(props) => (props.$isFavorite ? `grayscale(0)` : `grayscale(1)`)};
 
-  transition: 300ms;
+  cursor: pointer;
 
   &:before {
     display: inline-block;
@@ -79,7 +76,8 @@ const CardStar = styled.span`
     border-color: ${(props) =>
       props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 
-    color: ${colors.primary500};
+    color: ${(props) =>
+      props.$isFavorite ? `${colors.primary500}` : `${colors.neutral300}`};
     font-family: "Font Awesome 5 Free";
     font-size: 2rem;
     font-weight: 900;

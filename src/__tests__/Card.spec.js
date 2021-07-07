@@ -28,23 +28,21 @@ describe("GIVEN a name, a jobTitle and a picture to ca Card component", () => {
       expect(cardPicture).toBeTruthy();
     });
 
-    test("THEN the star on the Card is invisible", () => {
+    test("THEN the CardStar icon on the Card is grayscaled", () => {
       const cardStar = screen.getByTestId("star-icon-JohnDoe");
       const cardStarStyle = window.getComputedStyle(cardStar);
 
-      expect(cardStarStyle.opacity).toBe("0");
+      expect(cardStarStyle.filter).toBe("grayscale(1)");
     });
   });
 
-  describe("WHEN Card is clicked", () => {
-    test("THEN the star on the Card is visible", () => {
-      const card = screen.getByTestId("card-JohnDoe");
-      fireEvent.click(card);
-
+  describe("WHEN CardStar icon is clicked", () => {
+    test("THEN the CardStar is no more grayscaled", () => {
       const cardStar = screen.getByTestId("star-icon-JohnDoe");
+      fireEvent.click(cardStar);
       const cardStarStyle = window.getComputedStyle(cardStar);
 
-      expect(cardStarStyle.opacity).toBe("1");
+      expect(cardStarStyle.filter).toBe("grayscale(0)");
     });
   });
 });
