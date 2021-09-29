@@ -2,12 +2,14 @@ import { MemoryRouter } from "react-router";
 import { render, screen } from "@testing-library/react";
 
 import Home from "../pages/Home";
-import { ThemeProvider } from "../utils/context/providers";
+import { SurveyProvider, ThemeProvider } from "../utils/context/providers";
 
 function renderUI(ui) {
   const uiWrapper = ({ children }) => (
     <MemoryRouter>
-      <ThemeProvider>{children}</ThemeProvider>
+      <ThemeProvider>
+        <SurveyProvider>{children}</SurveyProvider>
+      </ThemeProvider>
     </MemoryRouter>
   );
 
