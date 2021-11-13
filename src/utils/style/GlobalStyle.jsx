@@ -9,7 +9,7 @@ function GlobalStyle() {
 
   console.log("GlobalStyle theme =", theme);
 
-  return <ThemedGlobalStyle $isDarkTheme={theme === "dark"} />;
+  return <ThemedGlobalStyle isDarkTheme={theme === "dark"} />;
 }
 
 const ThemedGlobalStyle = createGlobalStyle`
@@ -35,7 +35,7 @@ const ThemedGlobalStyle = createGlobalStyle`
   }
 
   ${(props) =>
-    props.$isDarkTheme
+    props.isDarkTheme
       ? `
     html {
       color: white;

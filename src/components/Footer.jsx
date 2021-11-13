@@ -10,10 +10,10 @@ function Footer() {
     theme === "dark" ? "Passer en mode clair" : "Passer en mode sombre";
 
   return (
-    <FooterContainer $isDarkTheme={theme === "dark"}>
+    <FooterContainer isDarkTheme={theme === "dark"}>
       <ThemeSwitcher
         onClick={() => toggleTheme()}
-        $isDarkTheme={theme === "dark"}
+        isDarkTheme={theme === "dark"}
       >
         {themeMessage}
       </ThemeSwitcher>
@@ -28,7 +28,7 @@ const FooterContainer = styled.footer`
 
   background: ${colors.secondary500};
 
-  ${(props) => (props.$isDarkTheme ? `background: ${colors.neutral700};` : ``)}
+  ${(props) => (props.isDarkTheme ? `background: ${colors.neutral700};` : ``)}
 `;
 
 const ThemeSwitcher = styled.button`
@@ -46,7 +46,7 @@ const ThemeSwitcher = styled.button`
   cursor: pointer;
 
   ${(props) =>
-    props.$isDarkTheme
+    props.isDarkTheme
       ? `
         color: white;
         background: ${colors.neutral900}`

@@ -18,7 +18,7 @@ function Header() {
         <TextLogo
           src={ShinyTextLogo}
           alt="Agence Shiny"
-          $isDarkTheme={theme === "dark"}
+          isDarkTheme={theme === "dark"}
         />
       </LogoLink>
       <nav>
@@ -29,7 +29,7 @@ function Header() {
                 window.scrollTo(0, 0);
               }}
               to="/"
-              $isDarkTheme={theme === "dark"}
+              isDarkTheme={theme === "dark"}
             >
               Accueil
             </StyledLink>
@@ -40,7 +40,7 @@ function Header() {
                 window.scrollTo(0, 0);
               }}
               to="/freelances"
-              $isDarkTheme={theme === "dark"}
+              isDarkTheme={theme === "dark"}
             >
               Nos freelances
             </StyledLink>
@@ -83,7 +83,7 @@ const Logo = styled.img`
 `;
 
 const TextLogo = styled.img`
-  filter: ${(props) => (props.$isDarkTheme ? `` : `invert(100%)`)};
+  filter: ${(props) => (props.isDarkTheme ? `` : `invert(100%)`)};
 `;
 
 const MainNavList = styled.ul`

@@ -11,7 +11,7 @@ function Freelances(props) {
   return (
     <FreelancesContainer>
       <MainTitle>Trouvez votre prestataire</MainTitle>
-      <SubTitle $isDarkTheme={theme === "dark"}>
+      <SubTitle isDarkTheme={theme === "dark"}>
         Chez Shiny nous réunissons les meilleurs profils pour vous.
       </SubTitle>
       <CardsContainer>
@@ -41,7 +41,7 @@ const SubTitle = styled.p`
   margin: 1rem 0;
 
   color: ${(props) =>
-    props.$isDarkTheme ? `${colors.neutral200}` : `${colors.secondary500}`};
+    props.isDarkTheme ? `${colors.neutral200}` : `${colors.secondary500}`};
   font-size: 1.25rem;
 `;
 

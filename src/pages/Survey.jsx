@@ -62,15 +62,15 @@ function Survey() {
       <AnswersButtonsWrapper>
         <AnswerButton
           onClick={() => saveUserAnswer(true)}
-          $isSelected={surveyAnswers[questionNumber] === true}
-          $isDarkTheme={theme === "dark"}
+          isSelected={surveyAnswers[questionNumber] === true}
+          isDarkTheme={theme === "dark"}
         >
           Oui
         </AnswerButton>
         <AnswerButton
           onClick={() => saveUserAnswer(false)}
-          $isSelected={surveyAnswers[questionNumber] === false}
-          $isDarkTheme={theme === "dark"}
+          isSelected={surveyAnswers[questionNumber] === false}
+          isDarkTheme={theme === "dark"}
         >
           Non
         </AnswerButton>
@@ -81,7 +81,7 @@ function Survey() {
             questionNumber === 1 ? ` disabled` : ``
           }`}
           to={`/faire-le-test/${prevQuestionNumber}`}
-          $isDarkTheme={theme === "dark"}
+          isDarkTheme={theme === "dark"}
         >
           Précédente
         </SurveyNavLink>
@@ -90,7 +90,7 @@ function Survey() {
             questionNumber === lastQuestionNumber ? `disabled` : ``
           }`}
           to={`/faire-le-test/${nextQuestionNumber}`}
-          $isDarkTheme={theme === "dark"}
+          isDarkTheme={theme === "dark"}
         >
           Suivante
         </SurveyNavLink>
@@ -148,9 +148,9 @@ const AnswerButton = styled.button`
   border-radius: 2rem;
 
   color: ${(props) => {
-    return props.$isSelected
+    return props.isSelected
       ? `white`
-      : props.$isDarkTheme
+      : props.isDarkTheme
       ? `white`
       : `${colors.neutral900}`;
   }};
@@ -159,9 +159,9 @@ const AnswerButton = styled.button`
   font-weight: 700;
 
   background: ${(props) => {
-    return props.$isSelected
+    return props.isSelected
       ? `${colors.primary500}`
-      : props.$isDarkTheme
+      : props.isDarkTheme
       ? `${colors.neutral700}`
       : `${colors.neutral100}`;
   }};
@@ -172,7 +172,7 @@ const AnswerButton = styled.button`
   &:hover {
     border-color: ${colors.primary500};
     border-color: ${(props) =>
-      props.$isDarkTheme ? `${colors.neutral200}` : `${colors.primary500}`};
+      props.isDarkTheme ? `${colors.neutral200}` : `${colors.primary500}`};
   }
 `;
 
@@ -186,7 +186,7 @@ const SurveyNavLink = styled(Link)`
   margin: 0 0.5rem;
   padding: 0.5rem;
 
-  color: ${(props) => (props.$isDarkTheme ? `white` : `${colors.neutral900}`)};
+  color: ${(props) => (props.isDarkTheme ? `white` : `${colors.neutral900}`)};
   font-size: 1.1rem;
   text-align: left;
   text-decoration: underline;

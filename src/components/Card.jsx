@@ -11,13 +11,13 @@ function Card({ name, jobTitle, picture }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   return (
-    <CardContainer $isDarkTheme={theme === "dark"}>
-      <CardJobTitle $isDarkTheme={theme === "dark"}>{jobTitle}</CardJobTitle>
+    <CardContainer isDarkTheme={theme === "dark"}>
+      <CardJobTitle isDarkTheme={theme === "dark"}>{jobTitle}</CardJobTitle>
       <CardPicture src={picture} alt={`Portrait de ${name}`} />
       <CardStar
         onClick={() => setIsFavorite(!isFavorite)}
-        $isFavorite={isFavorite}
-        $isDarkTheme={theme === "dark"}
+        isFavorite={isFavorite}
+        isDarkTheme={theme === "dark"}
         data-testid={`star-icon-${name.replace(" ", "")}`}
       ></CardStar>
       <CardName>{name}</CardName>
@@ -46,7 +46,7 @@ const CardContainer = styled.div`
   text-align: center;
 
   background: ${(props) =>
-    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
+    props.isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 
   cursor: pointer;
   transition: 200ms;
@@ -54,7 +54,7 @@ const CardContainer = styled.div`
   &:hover {
     border-color: ${colors.primary500};
     border-color: ${(props) =>
-      props.$isDarkTheme ? `${colors.neutral200}` : `${colors.primary500}`};
+      props.isDarkTheme ? `${colors.neutral200}` : `${colors.primary500}`};
   }
 `;
 
@@ -63,7 +63,7 @@ const CardStar = styled.span`
   top: 6rem;
   right: 5rem;
 
-  filter: ${(props) => (props.$isFavorite ? `grayscale(0)` : `grayscale(1)`)};
+  filter: ${(props) => (props.isFavorite ? `grayscale(0)` : `grayscale(1)`)};
 
   cursor: pointer;
 
@@ -74,10 +74,10 @@ const CardStar = styled.span`
     border: 0.25rem solid transparent;
     border-radius: 50%;
     border-color: ${(props) =>
-      props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
+      props.isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 
     color: ${(props) =>
-      props.$isFavorite ? `${colors.primary500}` : `${colors.neutral300}`};
+      props.isFavorite ? `${colors.primary500}` : `${colors.neutral300}`};
     font-family: "Font Awesome 5 Free";
     font-size: 2rem;
     font-weight: 900;
@@ -93,7 +93,7 @@ const CardJobTitle = styled.h2`
   margin: 0;
 
   color: ${(props) =>
-    props.$isDarkTheme ? `${colors.neutral200}` : `${colors.primary500}`};
+    props.isDarkTheme ? `${colors.neutral200}` : `${colors.primary500}`};
   line-height: 1.4;
   font-size: 1.25rem;
   font-weight: 700;

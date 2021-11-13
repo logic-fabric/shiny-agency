@@ -45,7 +45,7 @@ function Results() {
 
   if (neededSkills.length === 0) {
     return (
-      <NoSkillContainer $isDarkTheme={theme === "dark"}>
+      <NoSkillContainer isDarkTheme={theme === "dark"}>
         <NoSkillHeadline>Dommage...</NoSkillHeadline>
         <NoSkillIllustration src={NoSkillNeededIllustration} alt="Erreur 404" />
         <NoSkillText>
@@ -71,10 +71,10 @@ function Results() {
   console.log("skillsDetails =", skillsDetails);
 
   return (
-    <ResultsContainer $isDarkTheme={theme === "dark"}>
+    <ResultsContainer isDarkTheme={theme === "dark"}>
       <ResultsTitle>
         Les compétences dont vous avez besoin&nbsp;:{" "}
-        <NeededSkillsSpan $isDarkTheme={theme === "dark"}>
+        <NeededSkillsSpan isDarkTheme={theme === "dark"}>
           {skillsSummary}
         </NeededSkillsSpan>
       </ResultsTitle>
@@ -87,7 +87,7 @@ function Results() {
         {skillsDetails.map((skill) => {
           return (
             <div key={`job-detail-${skill.jobTitle}`}>
-              <JobTitle $isDarkTheme={theme === "dark"}>
+              <JobTitle isDarkTheme={theme === "dark"}>
                 {skill.jobTitle}
               </JobTitle>
               <JobDescription>{skill.jobDescription}</JobDescription>
@@ -105,7 +105,7 @@ const NoSkillContainer = styled.main`
   text-align: center;
 
   background: ${(props) =>
-    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
+    props.isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 `;
 
 const NoSkillHeadline = styled.p`
@@ -127,7 +127,7 @@ const ResultsContainer = styled.main`
   padding: 9rem 6rem;
 
   background: ${(props) =>
-    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
+    props.isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 `;
 
 const ResultsTitle = styled.h1`
@@ -140,7 +140,7 @@ const ResultsTitle = styled.h1`
 
 const NeededSkillsSpan = styled.span`
   color: ${(props) =>
-    props.$isDarkTheme ? `${colors.neutral300}` : `${colors.primary500}`};
+    props.isDarkTheme ? `${colors.neutral300}` : `${colors.primary500}`};
 `;
 
 const CallToActionContainer = styled.div`
@@ -171,7 +171,7 @@ const JobTitle = styled.h2`
   margin: 2rem 0 0.5rem 0;
 
   color: ${(props) =>
-    props.$isDarkTheme ? `${colors.neutral300}` : `${colors.primary500}`};
+    props.isDarkTheme ? `${colors.neutral300}` : `${colors.primary500}`};
 `;
 
 const JobDescription = styled.p`

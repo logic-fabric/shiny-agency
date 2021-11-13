@@ -9,7 +9,7 @@ function ErrorMain({ errorText }) {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <ErrorContainer $isDarkTheme={theme === "dark"}>
+    <ErrorContainer isDarkTheme={theme === "dark"}>
       <ErrorText>{errorText}</ErrorText>
       <CallToActionLink to="/">Revenir à l'accueil</CallToActionLink>
     </ErrorContainer>
@@ -22,7 +22,7 @@ const ErrorContainer = styled.main`
   text-align: center;
 
   background: ${(props) =>
-    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
+    props.isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 `;
 
 const ErrorText = styled.p`

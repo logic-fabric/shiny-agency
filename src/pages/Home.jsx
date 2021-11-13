@@ -11,7 +11,7 @@ function Home() {
   const { clearSurveyAnswers } = useContext(SurveyContext);
 
   return (
-    <HomeContainer $isDarkTheme={theme === "dark"}>
+    <HomeContainer isDarkTheme={theme === "dark"}>
       <div>
         <Slogan>
           Repérez vos besoins, on s'occupe du reste, avec les meilleurs talents
@@ -26,6 +26,7 @@ function Home() {
           Faire le test
         </CallToActionLink>
       </div>
+
       <div>
         <img src={HomeIllustration} alt="" />
       </div>
@@ -39,7 +40,7 @@ const HomeContainer = styled.main`
   padding: 11rem 6rem;
 
   background: ${(props) =>
-    props.$isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
+    props.isDarkTheme ? `${colors.neutral700}` : `${colors.neutral100}`};
 `;
 
 const Slogan = styled.h1`
