@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   primary100: "#e9e6fe",
   primary500: "#5843e4",
 
@@ -10,5 +10,3 @@ const colors = {
   neutral700: "#4f4c6b",
   neutral900: "#2f2e41",
 };
-
-export default colors;

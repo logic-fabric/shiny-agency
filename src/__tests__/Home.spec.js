@@ -1,7 +1,7 @@
 import { MemoryRouter } from "react-router";
 import { render, screen } from "@testing-library/react";
 
-import Home from "../pages/Home";
+import { Home } from "../pages/Home";
 import { SurveyProvider, ThemeProvider } from "../utils/context/providers";
 
 function renderUI(ui) {

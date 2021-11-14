@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import ErrorMain from "../components/ErrorMain";
+import { ErrorMain } from "../components/ErrorMain";
 import { SurveyContext, ThemeContext } from "../utils/context/providers";
 import { useFetch } from "../utils/hooks/useFetch";
-import colors from "../utils/style/colors";
+import { colors } from "../utils/style/colors";
 import NoSkillNeededIllustration from "../assets/no-skill-needed.png";
 
 export function determineNeededSkills(survey, userAnswers) {
@@ -22,7 +22,7 @@ export function determineNeededSkills(survey, userAnswers) {
   return [...neededSkills];
 }
 
-function Results() {
+export function Results() {
   const { theme } = useContext(ThemeContext);
   const { surveyAnswers } = useContext(SurveyContext);
   const { data, isDataLoading, error } = useFetch("../data/sample-survey.json");
@@ -179,5 +179,3 @@ const JobDescription = styled.p`
 
   font-size: 1.3rem;
 `;
-
-export default Results;

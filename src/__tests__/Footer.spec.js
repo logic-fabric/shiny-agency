@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import Footer from "../components/Footer";
+import { Footer } from "../components/Footer";
 import { ThemeProvider } from "../utils/context/providers";
 
 function renderUI(ui) {

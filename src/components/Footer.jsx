@@ -2,9 +2,9 @@ import { useContext } from "react";
 import styled from "styled-components";
 
 import { ThemeContext } from "../utils/context/providers";
-import colors from "../utils/style/colors";
+import { colors } from "../utils/style/colors";
 
-function Footer() {
+export function Footer() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const themeMessage =
     theme === "dark" ? "Passer en mode clair" : "Passer en mode sombre";
@@ -52,5 +52,3 @@ const ThemeSwitcher = styled.button`
         background: ${colors.neutral900}`
       : ``}
 `;
-
-export default Footer;

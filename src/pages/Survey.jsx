@@ -2,14 +2,14 @@ import { useContext } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
-import ErrorMain from "../components/ErrorMain";
+import { ErrorMain } from "../components/ErrorMain";
 import { SurveyContext, ThemeContext } from "../utils/context/providers";
 import { useFetch } from "../utils/hooks/useFetch";
-import colors from "../utils/style/colors";
+import { colors } from "../utils/style/colors";
 
 // TO DO: use react-query in prod instead of the custom useFetch
 
-function Survey() {
+export function Survey() {
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
   const { surveyAnswers, saveSurveyAnswers } = useContext(SurveyContext);
@@ -202,5 +202,3 @@ const SurveyNavLink = styled(Link)`
     text-decoration: none;
   }
 `;
-
-export default Survey;

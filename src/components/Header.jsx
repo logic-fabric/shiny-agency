@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { SurveyContext, ThemeContext } from "../utils/context/providers";
-import colors from "../utils/style/colors";
+import { colors } from "../utils/style/colors";
 import ShinyLogo from "../assets/logo-shiny.svg";
 import ShinyTextLogo from "../assets/logo-text-shiny.svg";
 
-function Header() {
+export function Header() {
   const { theme } = useContext(ThemeContext);
   const { clearSurveyAnswers } = useContext(SurveyContext);
 
@@ -124,5 +124,3 @@ const StyledLink = styled(Link)`
     }
   }
 `;
-
-export default Header;

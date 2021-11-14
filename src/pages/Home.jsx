@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { SurveyContext, ThemeContext } from "../utils/context/providers";
-import colors from "../utils/style/colors";
+import { colors } from "../utils/style/colors";
 import HomeIllustration from "../assets/home-illustration.png";
 
-function Home() {
+export function Home() {
   const { theme } = useContext(ThemeContext);
   const { clearSurveyAnswers } = useContext(SurveyContext);
 
@@ -64,5 +64,3 @@ const CallToActionLink = styled(Link)`
 
   background: ${colors.primary500};
 `;
-
-export default Home;

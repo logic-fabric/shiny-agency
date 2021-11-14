@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { createGlobalStyle } from "styled-components";
 
 import { ThemeContext } from "../context/providers";
-import colors from "./colors";
+import { colors } from "./colors";
 
-function GlobalStyle() {
+export function GlobalStyle() {
   const { theme } = useContext(ThemeContext);
 
   console.log("GlobalStyle theme =", theme);
@@ -45,5 +45,3 @@ const ThemedGlobalStyle = createGlobalStyle`
     `
       : ``}
 `;
-
-export default GlobalStyle;

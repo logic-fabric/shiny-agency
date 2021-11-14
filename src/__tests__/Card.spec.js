@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import Card from "../components/Card";
+import { Card } from "../components/Card";
 import { ThemeProvider } from "../utils/context/providers";
 import DefaultProfile from "../assets/profile.png";
 

@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import styled from "styled-components";
 
-import Card from "../components/Card";
+import { Card } from "../components/Card";
 import { ThemeContext } from "../utils/context/providers";
-import colors from "../utils/style/colors";
+import { colors } from "../utils/style/colors";
 
-function Freelances(props) {
+export function Freelances(props) {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -52,5 +52,3 @@ const CardsContainer = styled.div`
 
   margin: 4rem 16rem 0 16rem;
 `;
-
-export default Freelances;

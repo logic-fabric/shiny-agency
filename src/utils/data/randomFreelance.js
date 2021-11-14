@@ -97,7 +97,7 @@ async function getRandomFreelance() {
   }
 }
 
-async function getRandomProfiles(quantity) {
+export async function getRandomProfiles(quantity) {
   const freelancesProfiles = [];
 
   for (let _ = 0; _ < quantity; _++) {
@@ -107,5 +107,3 @@ async function getRandomProfiles(quantity) {
 
   return freelancesProfiles;
 }
-
-export default getRandomProfiles;

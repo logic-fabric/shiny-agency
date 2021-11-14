@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import { ThemeContext } from "../utils/context/providers";
-import colors from "../utils/style/colors";
+import { colors } from "../utils/style/colors";
 import DefaultPicture from "../assets/profile.png";
 
-function Card({ name, jobTitle, picture }) {
+export function Card({ name, jobTitle, picture }) {
   const { theme } = useContext(ThemeContext);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -112,5 +112,3 @@ const CardName = styled.h3`
   font-size: 1.5rem;
   font-weight: 700;
 `;
-
-export default Card;

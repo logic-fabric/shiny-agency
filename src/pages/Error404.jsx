@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { ThemeContext } from "../utils/context/providers";
-import colors from "../utils/style/colors";
+import { colors } from "../utils/style/colors";
 import Error404Illustration from "../assets/404-illustration.png";
 
-function Error404() {
+export function Error404() {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -53,5 +53,3 @@ const CallToActionLink = styled(Link)`
 
   background: ${colors.primary500};
 `;
-
-export default Error404;
